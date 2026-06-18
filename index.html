@@ -470,6 +470,39 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+
+    
+    /* 外枠のコンテナ（PC画像のサイズを基準にする） */
+.mockup-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px; /* 必要に応じて調整 */
+  margin: 0 auto;
+}
+
+/* PCの枠（前面に重ねる） */
+.mockup-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2; /* 動画より前に出す */
+  pointer-events: none; /* 画像の下の動画などを操作・クリックできるようにする場合 */
+}
+
+/* 動画（PCの液晶画面の部分に配置する） */
+.mockup-video {
+  position: absolute;
+  /* 以下の%値は、使用するPC画像の「液晶画面の領域」に合わせて微調整してください */
+  top: 6.5%;     
+  left: 12.2%;   
+  width: 75.6%;  
+  height: 79.5%; 
+  object-fit: cover; /* 画面にフィットさせる */
+  z-index: 1; /* 枠の後ろに配置 */
+}
+
+    
   </style>
 </head>
 <body>
@@ -510,9 +543,17 @@
           Works directly inside Google Sheets. No external server. Your data stays in your Google account.
         </p>
       </div>
-      <div class="hero-visual">
+      <!-- <div class="hero-visual">
         <img src="images/Macbook_Air_M2_Silver_Flatten.png" alt="GDrive To Sheet running inside Google Sheets on a MacBook Air" />
-      </div>
+      </div> -->
+      <div class="hero-visual">
+  <div class="mockup-container">
+    <video class="mockup-video" autoplay loop muted playsinline poster="images/video-poster.jpg">
+      <source src="images/gdrive-demo.mp4" type="video/mp4">
+    </video>
+    <img src="images/Macbook_Air_M2_Silver_Frame.png" alt="GDrive To Sheet running inside Google Sheets on a MacBook Air" class="mockup-frame" />
+  </div>
+</div>
     </div>
   </div>
 </section>

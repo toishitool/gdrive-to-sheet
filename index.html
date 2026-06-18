@@ -444,19 +444,35 @@
 
     /* ── Mobile ── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      /* .hero-visual { display: none; } */
-      .pain-grid { grid-template-columns: repeat(2,1fr); }
-      .steps-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: repeat(2,1fr); }
-      .perf-rows { grid-template-columns: repeat(2,1fr); }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .trust-inner { grid-template-columns: 1fr; gap: 36px; }
-      .use-grid { grid-template-columns: repeat(2,1fr); }
-      .screenshots-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
+  /* 1. gridからflex(縦並び)に変更し、順番を制御できるようにします */
+  .hero-inner { 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 2. テキスト・ボタン群を2番目に設定 */
+  .hero-content {
+    order: 2;
+  }
+  
+  /* 3. モックアップ(動画)を1番目に設定し、下に少し余白を入れます */
+  .hero-visual {
+    order: 1;
+    margin-bottom: 32px; /* ボタンと被らないように余白を調整 */
+    width: 100%;
+  }
+
+  .pain-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: repeat(2,1fr); }
+  .perf-rows { grid-template-columns: repeat(2,1fr); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .trust-inner { grid-template-columns: 1fr; gap: 36px; }
+  .use-grid { grid-template-columns: repeat(2,1fr); }
+  .screenshots-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
     @media (max-width: 600px) {
       .pain-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }

@@ -236,6 +236,59 @@
       .contact-block { flex-direction: column; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
+
+    .faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  background: var(--bg);
+}
+
+.faq-item h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.faq-item p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.75;
+}
+
+.faq-item ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.faq-item ul li {
+  display: flex;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.faq-item ul li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+    
   </style>
 </head>
 <body>

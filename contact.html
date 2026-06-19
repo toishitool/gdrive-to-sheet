@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – GDrive To Sheet</title>
+  <meta name="description" content="Contact support for GDrive To Sheet. Get help with product features, licensing, technical issues, refunds, and business inquiries." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://toishitool.github.io/gdrive-to-sheet/contact.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00A586;
+      --green-dark: #007A64;
+      --green-light: #E6F7F3;
+      --text: #1A1A1A;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FFFFFF;
+      --bg-subtle: #F9FAFB;
+      --bg-dark: #0F1A18;
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    nav.global-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 28px; }
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--green); }
+
+    /* Layout */
+    .page-wrap {
+      max-width: 1160px; margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* 2カラムレイアウト用のコンテナ */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Header */
+    .page-header {
+      max-width: 760px;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-light); padding: 4px 12px;
+      border-radius: 100px; margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-size: 36px; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .page-header .meta {
+      font-size: 14px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .meta-dot { color: var(--border); }
+
+    /* Intro block */
+    .intro-block {
+      max-width: 760px;
+      background: var(--green-light);
+      border: 1px solid var(--green-mid, #B3E8DC);
+      border-radius: 12px; padding: 20px 24px;
+      margin-bottom: 48px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .intro-block .icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .intro-block p { font-size: 15px; color: var(--green-dark); line-height: 1.6; }
+    .intro-block strong { font-weight: 700; }
+
+    /* Main Content Area */
+    .main-content {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    /* Sections */
+    .contact-section { margin-bottom: 48px; }
+    .contact-section h2 {
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 14px; color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .contact-section h2 .section-num {
+      font-size: 12px; font-weight: 700; letter-spacing: .06em;
+      color: var(--green); background: var(--green-light);
+      padding: 3px 9px; border-radius: 100px;
+      flex-shrink: 0;
+    }
+    .contact-section p {
+      font-size: 15px; color: var(--text-muted);
+      margin-bottom: 12px; line-height: 1.75;
+    }
+    .contact-section p:last-child { margin-bottom: 0; }
+    
+    /* Lists */
+    .contact-section ul {
+      list-style: none; margin: 16px 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .contact-section ul li {
+      font-size: 15px; color: var(--text-muted);
+      display: flex; gap: 10px; align-items: flex-start; line-height: 1.6;
+    }
+    .contact-section ul li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0; margin-top: 7px;
+    }
+    .contact-section ul li strong { color: var(--text); font-weight: 600; }
+
+    /* Card block */
+    .contact-card-block {
+      background: var(--bg-dark);
+      border-radius: 14px; padding: 32px;
+      display: flex; gap: 20px; align-items: flex-start;
+      margin-top: 16px;
+    }
+    .contact-card-block .cicon {
+      width: 44px; height: 44px; background: var(--green);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .contact-card-block h3 { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .contact-card-block .email-link {
+      font-size: 22px; font-weight: 700; color: #fff;
+      text-decoration: none; border-bottom: 2px solid rgba(0,165,134,0.3);
+      transition: border-color .2s;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .contact-card-block .email-link:hover { border-color: var(--green); }
+    .contact-card-block .response-text { font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 6px; }
+
+    /* Checklist Card */
+    .checklist-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+    .checklist-card p {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* Divider */
+    .section-divider {
+      height: 1px; background: var(--border); margin: 0 0 48px;
+    }
+
+    /* ==========================================================================
+       MOBILE TOOGLE MENU (CSS-ONLY TABS/HAMBURGER FOR TOC)
+       ========================================================================== */
+    .toc-trigger-input {
+      display: none;
+    }
+    
+    /* モバイル時の固定ハンバーガー（右下） */
+    .toc-trigger-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      background: var(--green);
+      color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 165, 134, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .toc-trigger-btn:hover {
+      background: var(--green-dark);
+    }
+    .toc-trigger-btn .icon-close {
+      display: none;
+    }
+
+    /* モバイル時のドロワーとしての目次 */
+    .toc {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999;
+      background: var(--bg);
+      padding: 40px 24px 120px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+    }
+    .toc h3 { 
+      font-size: 13px; font-weight: 700; 
+      text-transform: uppercase; letter-spacing: .07em; 
+      color: var(--text-light); margin-bottom: 20px; 
+      border-bottom: 1px solid var(--border); padding-bottom: 10px;
+    }
+    .toc ol { list-style: none; display: flex; flex-direction: column; gap: 14px; counter-reset: toc; }
+    .toc ol li { counter-increment: toc; }
+    .toc ol li a {
+      font-size: 16px; color: var(--text-muted); text-decoration: none;
+      display: flex; gap: 12px; align-items: center; transition: color .2s;
+      padding: 6px 0;
+    }
+    .toc ol li a:hover { color: var(--green); }
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px; font-weight: 700; color: var(--text-light);
+      min-width: 24px;
+    }
+
+    /* ハンバーガーメニューが開いた状態の制御 */
+    .toc-trigger-input:checked ~ .toc {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .toc-trigger-input:checked ~ .toc-trigger-btn {
+      background: #EF4444;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    }
+    .toc-trigger-input:checked ~ .toc-trigger-btn .icon-open {
+      display: none;
+    }
+    .toc-trigger-input:checked ~ .toc-trigger-btn .icon-close {
+      display: inline;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo img { height: 24px; opacity: 0.7; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F1A18;
+        --bg-subtle: #141F1D;
+        --text: #F1F5F4;
+        --text-muted: #8B9E9B;
+        --text-light: #5C726E;
+        --border: #1F302D;
+        --green-light: #0D2420;
+      }
+      nav.global-nav { background: rgba(15,26,24,0.92); }
+      .intro-block { border-color: rgba(0,165,134,0.2); }
+      .checklist-card { background: var(--bg-subtle); }
+    }
+
+    /* ==========================================================================
+       DESKTOP RESPONSIVE LAYOUT (1024px以上で2カラム＆固定追従にシフト)
+       ========================================================================== */
+    @media (min-width: 1024px) {
+      .content-layout {
+        grid-template-columns: 760px 280px; 
+        justify-content: space-between;
+      }
+      
+      .toc-trigger-btn {
+        display: none;
+      }
+      
+      .toc {
+        position: sticky;
+        top: 100px; 
+        margin-bottom: 0;
+        padding: 24px;
+        background: var(--bg-subtle); 
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+      .toc h3 {
+        font-size: 12px;
+        margin-bottom: 12px;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .toc ol {
+        gap: 8px;
+      }
+      .toc ol li a {
+        font-size: 14px;
+        padding: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-header h1 { font-size: 28px; }
+      .contact-card-block { flex-direction: column; padding: 24px; }
+      .contact-card-block .email-link { font-size: 18px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="global-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Home
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <header class="page-header">
+      <span class="eyebrow">Support &amp; Inquiry</span>
+      <h1>Contact</h1>
+      <div class="meta">
+        <span>GDrive To Sheet</span>
+        <span class="meta-dot">·</span>
+        <span id="last-updated">Last updated: —</span>
+      </div>
+    </header>
+
+    <div class="intro-block">
+      <span class="icon">✉️</span>
+      <p>Need help with <strong>GDrive To Sheet</strong>? We're happy to assist with your questions, support needs, and business inquiries.</p>
+    </div>
+
+    <div class="content-layout">
+      
+      <div class="main-content">
+        
+        <div class="contact-section" id="s1">
+          <h2><span class="section-num">01</span>How We Can Help</h2>
+          <p>We are always happy to provide assistance regarding the following matters:</p>
+          <ul>
+            <li><strong>Product questions</strong> — Feature inquiries and operational help</li>
+            <li><strong>Licensing questions</strong> — Keys, upgrades, and volume choices</li>
+            <li><strong>Technical support</strong> — Troubleshooting and execution error fixes</li>
+            <li><strong>Refund requests</strong> — Requests aligned with our refund policy</li>
+            <li><strong>Business inquiries</strong> — Partnerships, customized setups, or integrations</li>
+          </ul>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="contact-section" id="s2">
+          <h2><span class="section-num">02</span>Contact Information</h2>
+          <p>Please send your detailed inquiries directly to our designated support mailbox:</p>
+          
+          <div class="contact-card-block">
+            <div class="cicon">📧</div>
+            <div>
+              <h3>Support &amp; Business Email</h3>
+              <a href="mailto:toishitool@gmail.com" class="email-link">toishitool@gmail.com</a>
+              <div class="response-text">
+                <span>🕒</span>
+                <span>We typically respond within 2 business days.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="contact-section" id="s3">
+          <h2><span class="section-num">03</span>Before Contacting Support</h2>
+          <p>To help us investigate your technical difficulties and resolve your issue faster, please make sure to include the following details in your email:</p>
+          
+          <div class="checklist-card">
+            <p>📋 Recommended Checklist:</p>
+            <ul>
+              <li><strong>Product edition</strong> (Free, Personal, or Team)</li>
+              <li><strong>Google account type</strong> (Personal or Workspace)</li>
+              <li><strong>Description of the issue</strong> (Steps to reproduce the problem)</li>
+              <li><strong>Error message</strong> (The exact text displayed, if available)</li>
+              <li><strong>Screenshots</strong> (Visual reference of the error, if applicable)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="contact-section" id="s4">
+          <h2><span class="section-num">04</span>Business Inquiries</h2>
+          <p>For partnership, agency, or corporate volume licensing discussions, please contact us using the official email address listed above.</p>
+          <p style="margin-top: 24px; font-weight: 500; color: var(--green-dark);">Thank you for using GDrive To Sheet.</p>
+        </div>
+
+      </div>
+
+      <input type="checkbox" id="toc-toggle" class="toc-trigger-input" />
+      
+      <label for="toc-toggle" class="toc-trigger-btn" aria-label="Toggle contents menu">
+        <svg class="icon-open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="icon-close" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </label>
+
+      <nav class="toc" aria-label="Table of contents">
+        <h3>Contents</h3>
+        <ol>
+          <li><a href="#s1" onclick="document.getElementById('toc-toggle').checked = false;">How We Can Help</a></li>
+          <li><a href="#s2" onclick="document.getElementById('toc-toggle').checked = false;">Contact Information</a></li>
+          <li><a href="#s3" onclick="document.getElementById('toc-toggle').checked = false;">Before Contacting</a></li>
+          <li><a href="#s4" onclick="document.getElementById('toc-toggle').checked = false;">Business Inquiries</a></li>
+        </ol>
+      </nav>
+
+    </div> 
+    </div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo"><img src="images/logo_gdrivetosheet_dk.png" alt="GDrive To Sheet" /></a>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="license.html">License Agreement</a>
+        <a href="refund-policy.html">Refund Policy</a>
+        <a href="contact.html">Contact</a>
+        <a href="support.html">Support &amp; FAQ</a>
+        
+    </div>
+    <span class="footer-copy">© 2026 GDrive To Sheet. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  // Auto date
+  const d = new Date();
+  const formatted = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('last-updated').textContent = 'Last updated: ' + formatted;
+</script>
+
+</body>
+</html>

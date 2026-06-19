@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Free Version – GDrive To Sheet</title>
+  <meta name="description" content="Try GDrive To Sheet free with up to 50 exported items. Export Google Drive folder structures into Google Sheets instantly." />
+  <link rel="canonical" href="https://toishitool.github.io/gdrive-to-sheet/free-download.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00A586;
+      --green-dark: #007A64;
+      --green-deep: #005A4A;
+      --green-light: #E6F7F3;
+      --green-mid: #B3E8DC;
+      --text: #1A1A1A;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FFFFFF;
+      --bg-subtle: #F9FAFB;
+      --bg-dark: #0F1A18;
+      --radius: 10px;
+      --radius-lg: 16px;
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,165,134,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,165,134,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 28px; }
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--green); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 9px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all .2s; white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green); color: #fff;
+      box-shadow: 0 2px 8px rgba(0,165,134,0.30);
+    }
+    .btn-primary:hover { background: var(--green-dark); box-shadow: 0 4px 16px rgba(0,165,134,0.40); transform: translateY(-1px); }
+    .btn-secondary {
+      background: #fff; color: var(--green);
+      border: 1.5px solid var(--green);
+    }
+    .btn-secondary:hover { background: var(--green-light); transform: translateY(-1px); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-light); padding: 4px 12px;
+      border-radius: 100px; margin-bottom: 16px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 88px 0 64px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--text);
+      margin-bottom: 18px;
+    }
+    .hero h1 em { font-style: normal; color: var(--green); }
+    .hero p.sub {
+      font-size: 18px; color: var(--text-muted);
+      line-height: 1.65; margin: 0 auto 36px; max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
+    .trust-note {
+      font-size: 13px; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .trust-note svg { flex-shrink: 0; }
+
+    /* FEATURE CARD */
+    .feature-section { padding: 0 0 72px; }
+    .feature-card {
+      max-width: 640px; margin: 0 auto;
+      background: var(--bg-subtle); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 40px;
+    }
+    .feature-card h2 {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--text-light); margin-bottom: 20px;
+      text-align: center;
+    }
+    .feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .feature-list li {
+      font-size: 15px; font-weight: 500; color: var(--text);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .feature-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--green); }
+
+    /* LIMITATIONS */
+    .limits-section { padding: 0 0 80px; }
+    .limits-card {
+      max-width: 640px; margin: 0 auto;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px 40px; background: #fff;
+    }
+    .limits-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 18px; }
+    .limits-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .limits-list li {
+      font-size: 14px; color: var(--text-muted);
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.6;
+    }
+    .limits-list li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--text-light); flex-shrink: 0; margin-top: 7px;
+    }
+    .limits-list li strong { color: var(--text); font-weight: 600; }
+
+    /* PRIMARY CTA BAND */
+    .cta-band {
+      background: var(--bg-dark); padding: 56px 0; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,165,134,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,165,134,0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cta-band-inner { position: relative; z-index: 2; text-align: center; }
+    .cta-band h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .cta-band p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+
+    /* UPSELL */
+    .upsell { padding: 80px 0; background: var(--bg-subtle); }
+    .upsell-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+    .upsell-inner > .eyebrow { margin-bottom: 12px; }
+    .upsell h2 { font-size: clamp(24px,3vw,32px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+    .upsell-card {
+      background: #fff; border: 1.5px solid var(--green);
+      border-radius: var(--radius-lg); padding: 36px 40px;
+      box-shadow: 0 0 0 4px rgba(0,165,134,0.08);
+      text-align: left;
+    }
+    .upsell-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .upsell-name { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+    .upsell-badge {
+      background: var(--green); color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; padding: 4px 11px; border-radius: 100px;
+    }
+    .upsell-price { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 4px; }
+    .upsell-price .now { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .upsell-price .was { font-size: 19px; color: var(--text-light); text-decoration: line-through; }
+    .upsell-launch { font-size: 12px; color: var(--green); font-weight: 600; margin-bottom: 24px; }
+    .upsell-divider { height: 1px; background: var(--border); margin: 0 0 22px; }
+    .upsell-features { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; }
+    .upsell-features li { font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start; }
+    .upsell-features li svg { flex-shrink: 0; margin-top: 2px; color: var(--green); }
+    .upsell-btn { width: 100%; text-align: center; display: block; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo img { height: 24px; opacity: 0.7; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F1A18;
+        --bg-subtle: #141F1D;
+        --text: #F1F5F4;
+        --text-muted: #8B9E9B;
+        --text-light: #5C726E;
+        --border: #1F302D;
+        --green-light: #0D2420;
+      }
+      nav { background: rgba(15,26,24,0.92); }
+      .limits-card, .upsell-card { background: #141F1D; }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .feature-card, .limits-card { padding: 28px 24px; }
+      .feature-list { grid-template-columns: 1fr; }
+      .upsell-card { padding: 28px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Home
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero grid-bg" aria-label="Hero">
+  <div class="container">
+    <span class="eyebrow">Free Version</span>
+    <h1>Get Your <em>Free</em> Version</h1>
+    <p class="sub">Try GDrive To Sheet free with up to 50 exported items.</p>
+    <div class="hero-btns">
+      <a href="https://docs.google.com/spreadsheets/d/REPLACE_WITH_TEMPLATE_ID/copy" class="btn btn-primary" id="primary-cta">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2v13M5 9l7 7 7-7"/><path d="M3 20h18"/></svg>
+        Open Free Version
+      </a>
+    </div>
+    <p class="trust-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Opens a copy in your own Google account. No installation required.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURE CARD -->
+<section class="feature-section reveal">
+  <div class="container">
+    <div class="feature-card">
+      <h2>What's Included</h2>
+      <ul class="feature-list">
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Export up to 50 items</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Folder tree export</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> New file detection</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Size heatmap</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Grouping features</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No external server</li>
+        <li style="grid-column: 1 / -1;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Runs inside your Google account</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITATIONS -->
+<section class="limits-section reveal">
+  <div class="container">
+    <div class="limits-card">
+      <h2>Free Version Limitations</h2>
+      <ul class="limits-list">
+        <li><strong>Export limit:</strong> 50 items per export</li>
+        <li><strong>Intended for evaluation</strong> — to test compatibility before upgrading</li>
+        <li><strong>Personal use only</strong></li>
+        <li><strong>Supports Google Drive URLs only</strong> — no Dropbox, OneDrive, or Box</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band reveal">
+  <div class="container cta-band-inner">
+    <h2>Ready to see your Drive structure?</h2>
+    <p>It opens directly inside Google Sheets — nothing to install.</p>
+    <a href="https://docs.google.com/spreadsheets/d/REPLACE_WITH_TEMPLATE_ID/copy" class="btn btn-primary" style="font-size:16px;padding:15px 32px;">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2v13M5 9l7 7 7-7"/><path d="M3 20h18"/></svg>
+      Open Free Version
+    </a>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="upsell reveal" aria-labelledby="upsell-heading">
+  <div class="container">
+    <div class="upsell-inner">
+      <span class="eyebrow">Need More?</span>
+      <h2 id="upsell-heading">Need unlimited exports?</h2>
+
+      <div class="upsell-card">
+        <div class="upsell-card-header">
+          <span class="upsell-name">Personal Edition</span>
+          <span class="upsell-badge">Most Popular</span>
+        </div>
+        <div class="upsell-price">
+          <span class="now">$29</span>
+          <span class="was">$49</span>
+        </div>
+        <div class="upsell-launch">🎉 Launch price — save $20</div>
+        <div class="upsell-divider"></div>
+        <ul class="upsell-features">
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Unlimited exports</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Auto-resume processing</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Tested on 50,000+ items</li>
+        </ul>
+        <a href="index.html#pricing" class="btn btn-primary upsell-btn">Upgrade to Personal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo"><img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" /></a>
+      <div class="footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+      </div>
+      <span class="footer-copy">© 2025 GDrive To Sheet. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

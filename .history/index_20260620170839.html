@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDrive To Sheet – Google Drive File & Folder Export Tool</title>
+  <meta name="description"
+    content="Export entire Google Drive folder structures into Google Sheets. Visualize hierarchy, detect new files, identify empty folders, and understand large shared drives instantly." />
+  <meta name="keywords" content="Google Drive export, Google Sheets, folder structure, file audit, Drive to Sheet" />
+  <meta name="author" content="Toishi Tool" />
+  <meta property="og:title" content="GDrive To Sheet – Google Drive Export Tool" />
+  <meta property="og:description"
+    content="Stop digging through messy Google Drive folders. Export entire structures into Google Sheets in seconds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://toishitool.github.io/gdrive-to-sheet/" />
+  <link rel="canonical" href="https://toishitool.github.io/gdrive-to-sheet/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GDrive To Sheet",
+    "description": "Export entire Google Drive folder structures into Google Sheets. Visualize hierarchy, detect new files, identify empty folders.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web (Google Workspace)",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Version",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Personal Edition",
+        "price": "29",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Team Edition",
+        "price": "199",
+        "priceCurrency": "USD"
+      }
+    ],
+    "url": "https://toishitool.github.io/gdrive-to-sheet/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" />
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="free-download.html" class="nav-cta">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M12 2v13M5 9l7 7 7-7" />
+            <path d="M3 20h18" />
+          </svg>
+          Try Free Version
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero grid-bg" aria-label="Hero">
+    <div class="container" style="padding-right: 0;">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">Google Drive Visibility Tool</span>
+          <h1><em>Understand</em> Huge Shared Google Drive Folders in Minutes</h1>
+          <p class="sub">Export Google Drive folder structures into a searchable Google Sheet. Find new files, spot
+            empty folders, and understand large shared drives in minutes — not hours.</p>
+          <div class="hero-stats">
+            <ul class="price-features" style="gap: 0;">
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Tested with 50,000+ files & folders
+              </li>
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Automatic timeout recovery
+              </li>
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                No external server
+              </li>
+            </ul>
+          </div>
+          <div class="hero-btns">
+            <a href="free-download.html" class="btn btn-primary">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M12 2v13M5 9l7 7 7-7" />
+                <path d="M3 20h18" />
+              </svg>
+              Try Free Version
+            </a>
+            <a href="personal-edition.html" class="btn btn-secondary">Get Personal Edition — $29</a>
+          </div>
+          <p class="trust-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Works directly inside Google Sheets. No external server. Your data stays in your Google account.
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="mockup-container">
+            <video class="mockup-video" autoplay loop muted playsinline poster="images/video-poster.png">
+              <source src="images/gdrive-demo.mp4" type="video/mp4">
+            </video>
+            <img src="images/Macbook_Air_M2_Silver_Flatten.png"
+              alt="GDrive To Sheet running inside Google Sheets on a MacBook Air" class="mockup-frame" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="notice-block">
+    <p><strong>Independent Software Notice:</strong> GDrive To Sheet is an <strong>independent standalone utility
+        product</strong>. It is <strong>NOT</strong> structurally affiliated with, endorsed by, or sponsored by Google
+      LLC. Google Drive™,
+      Google Sheets™, and Google Workspace™ are registered functional trademarks of Google LLC.</p>
+  </div>
+
+  <section class="pain reveal" id="pain" aria-labelledby="pain-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Problem</span>
+        <h2 id="pain-heading">Why Shared Google Drives Become Impossible to Understand</h2>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">📁</div>
+          <h3>Client sends a shared folder with thousands of files — and no map.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔍</div>
+          <h3>Nobody knows where the newest files were uploaded.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🫥</div>
+          <h3>Empty folders waste time during audits and handovers.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🪏</div>
+          <h3>Important files are buried deep inside nested folder layers.</h3>
+        </div>
+      </div>
+      <div class="pain-explain">
+        <p>When a Google Drive grows to thousands of files, navigation becomes a <strong>manual investigation
+            process</strong>. GDrive To Sheet turns that structure into a searchable spreadsheet view — in seconds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how reveal" id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How It Works</span>
+        <h2 id="how-heading">Paste. Scan. Understand.</h2>
+      </div>
+
+      <div class="how-flow">
+        <div class="flow-node">
+          <div class="flow-icon gdrive">
+            <svg width="38" height="38" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z"
+                fill="#0066da" />
+              <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z"
+                fill="#00ac47" />
+              <path
+                d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z"
+                fill="#ea4335" />
+              <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d" />
+              <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc" />
+              <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z"
+                fill="#ffba00" />
+            </svg>
+          </div>
+          <div class="flow-label">Google Drive</div>
+          <div class="flow-sublabel">Your shared folder</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <div class="flow-icon tool">
+            <img src="images/logo_gdrivetosheet_square.svg" alt="" style="height:38px;" />
+          </div>
+          <div class="flow-label">GDrive To Sheet</div>
+          <div class="flow-sublabel">Runs inside Sheets</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <div class="flow-icon sheets">
+            <svg width="38" height="38" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm0-4H7v-2h5v2zm0-4H7V7h5v2zm5 8h-3v-2h3v2zm0-4h-3v-2h3v2zm0-4h-3V7h3v2z"
+                fill="#0F9D58" />
+            </svg>
+          </div>
+          <div class="flow-label">Google Sheets</div>
+          <div class="flow-sublabel">Full structured view</div>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 01</div>
+          <h3>Paste a Google Drive folder URL</h3>
+          <p>Open the tool inside Google Sheets and paste any Google Drive folder URL — shared drives and My Drive both
+            work.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 02</div>
+          <h3>Run the export</h3>
+          <p>Click Export Structure. The tool scans folders and files recursively using Google Apps Script — no external
+            server required.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 03</div>
+          <h3>View the entire structure in Google Sheets</h3>
+          <p>Your full folder tree appears as a spreadsheet: sizes, hierarchy, new files highlighted, empty folders
+            flagged, rows grouped by level.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features reveal" id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Features</span>
+        <h2 id="features-heading">Built For Large Drive Audits</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <span class="feat-icon">🌳</span>
+          <h3>Full Folder Tree Export</h3>
+          <p>Export folders and files into a structured spreadsheet hierarchy that mirrors your exact Drive structure —
+            level by level.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">❇️</span>
+          <h3>New File Detection</h3>
+          <p>Highlight newly added files and folders compared to a previous export. Instantly see what changed without
+            digging through Drive.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🫥</span>
+          <h3>Empty Folder Visibility</h3>
+          <p>Find empty folders via folder tree exports without manually opening every directory. Surface dead weight
+            before your next handover.
+          </p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🌡️</span>
+          <h3>Size Heatmap</h3>
+          <p>Large folders and files become visually obvious using automatic color indicators. Spot storage hogs at a
+            glance.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🗃️</span>
+          <h3>Google Sheets Grouping</h3>
+          <p>Collapse and expand folder levels directly in Sheets using native row grouping. Navigate thousands of rows
+            without confusion.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">⚡</span>
+          <h3>Large Dataset Support</h3>
+          <p>Supports very large Google Drive structures using automatic resume processing — no timeout issues even at
+            50k+ items.</p>
+        </div>
+      </div>
+
+      <div class="perf-block reveal">
+        <h3>Performance at Scale</h3>
+        <div class="perf-rows">
+          <div class="perf-row">
+            <span class="perf-count">~250 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:5%"></div>
+            </div>
+            <span class="perf-time">~5 seconds</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~2,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:20%"></div>
+            </div>
+            <span class="perf-time">~30 seconds</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~15,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:55%"></div>
+            </div>
+            <span class="perf-time">1.5 – 2 min</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~53,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:100%"></div>
+            </div>
+            <span class="perf-time">Auto-resume processing</span>
+          </div>
+        </div>
+        <p class="perf-disclaimer">Actual performance depends on Google Workspace limits and your account environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screenshots reveal" id="screenshots" aria-labelledby="screenshots-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Product Screenshot</span>
+        <h2 id="screenshots-heading">See Your Drive Structure At A Glance</h2>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-item main-shot" style="border: 0">
+          <img src="images/Macbook_Air_M2_Silver_slim.png"
+            alt="GDrive To Sheet tree hierarchy export inside Google Sheets" style="width:100%; display:block;" />
+          <div class="screenshot-label">📊 Full tree hierarchy export — folders, files, sizes, depth levels, all in one
+            sheet</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot01.png" alt="New files highlighted in Google Sheets after folder export"
+            style="width:100%; display:block;" />
+          <div class="screenshot-label">❇️ New files highlighted since previous export</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot02.png" alt="Storage usage heatmap in Google Sheets"
+            style="width:100%; display:block;" />
+          <div class="screenshot-label">🌡️ Size heatmap — color-coded storage usage</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot03.png" alt="Collapsible folder hierarchy groups" style="width:100%; display:block;" />
+          <div class="screenshot-label">🗃️ Native Sheets grouping — collapse/expand folder levels</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot04.png" alt="Empty folders automatically detected" style="width:100%; display:block;" />
+          <div class="screenshot-label">🌳 Identify empty folders at a glance from the exported folder tree</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing reveal" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Pricing</span>
+        <h2 id="pricing-heading">Choose Your Edition</h2>
+        <p>Try it free with up to 50 items. Upgrade for unlimited exports.</p>
+        <p class="pricing-badges" style="margin-top: 20px; display: flex; justify-content: center;">
+          <span style="
+    background: var(--bg-muted, #f4f4f5); 
+    color: var(--text-main); 
+    padding: 6px 20px; 
+    border-radius: 30px; 
+    font-size: 14px; 
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  ">
+            <span>One-time purchase</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
+            <span>Lifetime license</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
+            <span>No subscription</span>
+          </span>
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Free Version</div>
+          <div class="price-amount">
+            <span class="price-now">$0</span>
+          </div>
+          <div class="price-launch" style="height:18px"></div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Export up to <strong>50 items</strong></span>
+            </li>
+            <li style="display: block;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>All core features included</span>
+              </div>
+              <ul
+                style="list-style: none; padding-left: 25px; margin-top: 10px; display: flex; flex-direction: column; gap: 12px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                  <span
+                    style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span>Folder tree export</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                  <span
+                    style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span>New file highlighting</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                  <span
+                    style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span>Size heatmap</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                  <span
+                    style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span>Grouping features</span>
+                </li>
+              </ul>
+
+            </li>
+          </ul>
+          <a href="free-download.html" class="btn btn-secondary price-btn">Download Free</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-name">Personal Edition</div>
+          <div class="price-amount">
+            <span class="price-now">$29</span>
+            <span class="price-was">$49</span>
+          </div>
+          <div class="price-launch">🎉 Launch price — save $20</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Unlimited exports</strong></span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>All core features included</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Auto-resume processing</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Tested on datasets with 50,000+ items</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Single user license</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Personal use only</span>
+            </li>
+          </ul>
+          <a href="personal-edition.html" class="btn btn-primary price-btn">Buy Personal Edition</a>
+        </div>
+
+        <div class="theme-team price-card">
+          <span class="price-badge">For Teams</span>
+
+          <div class="price-name">Team Edition</div>
+          <div class="price-amount">
+            <span class="price-now">$199</span>
+            <span class="price-was">$299</span>
+          </div>
+          <div class="price-launch">🎉 Launch price — save $100</div>
+          <div class="price-divider"></div>
+
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Unlimited exports</strong></span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>All core features included</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Auto-resume processing</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Tested on datasets with 50,000+ items</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Company / agency use</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Internal team sharing</span>
+            </li>
+          </ul>
+
+          <a href="team-edition.html" class="btn btn-secondary price-btn">
+            Buy Team Edition
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usecases reveal" id="usecases" aria-labelledby="use-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Use Cases</span>
+        <h2 id="use-heading">Perfect For</h2>
+      </div>
+      <div class="use-grid">
+        <div class="use-card">
+          <span class="use-icon">💼</span>
+          <h3>Client Drive Audits</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🎬</span>
+          <h3>Video Production Projects</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">📣</span>
+          <h3>Marketing Asset Libraries</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🤝</span>
+          <h3>Agency Handover Reviews</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">📚</span>
+          <h3>Knowledge Base Organization</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🗄️</span>
+          <h3>Large Archive Cleanup</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq reveal" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-heading">Common Questions</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Is this a cloud service?</h3>
+          <p>No. Everything runs inside your Google account using Google Apps Script and Google Sheets. Nothing is
+            hosted externally.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do my files leave Google Drive?</h3>
+          <p>No. No external server is involved. All processing happens within your own Google account.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does this work with Shared Drives?</h3>
+          <p>Yes — if your account has the appropriate access permissions to the shared drive or folder.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I scan my entire My Drive?</h3>
+          <p>Yes. You can point it at any folder URL, including the root of your My Drive.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I use this for Dropbox or OneDrive?</h3>
+          <p>No. This product only supports Google Drive URLs. It is purpose-built for Google Workspace.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need a paid Google Workspace plan?</h3>
+          <p>No. It works with standard Google accounts, subject to standard Google Apps Script execution limits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust reveal" id="trust" aria-labelledby="trust-heading">
+    <div class="container">
+      <div class="trust-inner">
+        <div>
+          <span class="eyebrow">Privacy First</span>
+          <h2 id="trust-heading">Your data never leaves Google.</h2>
+          <p style="margin-top:12px">GDrive To Sheet is designed around a single principle: your files are yours. No
+            signups, no external servers, no file uploads to anyone.</p>
+        </div>
+        <ul class="trust-points">
+          <li>
+            <div class="ticon">🔒</div>
+            No external database or server
+          </li>
+          <li>
+            <div class="ticon">🚫</div>
+            No file uploads to our servers
+          </li>
+          <li>
+            <div class="ticon">✅</div>
+            Runs entirely inside the Google ecosystem
+          </li>
+          <li>
+            <div class="ticon">🎛️</div>
+            You keep full control of your data
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="notice-block">
+    <p>🕊️<strong>Independent Software Notice:</strong> GDrive To Sheet is an <strong>independent standalone utility
+        product</strong>. It is <strong>NOT</strong> structurally affiliated with, endorsed by, or sponsored by Google
+      LLC. Google Drive™,
+      Google Sheets™, and Google Workspace™ are registered functional trademarks of Google LLC.</p>
+  </div>
+
+  <section class="final-cta" aria-labelledby="cta-heading">
+    <div class="container final-cta-inner">
+      <span class="eyebrow" style="background:rgba(0,165,134,0.2);color:#6EDEC8;">Start Your First Export</span>
+      <h2 id="cta-heading">Stop Exploring Drive Folders One Click At A Time</h2>
+      <p>Understand entire folder structures in minutes — not hours.</p>
+      <div class="final-cta-btns">
+        <a href="#" class="btn btn-primary" style="font-size:16px;padding:15px 32px;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M12 2v13M5 9l7 7 7-7" />
+            <path d="M3 20h18" />
+          </svg>
+          Try Free Version
+        </a>
+        <a href="personal-edition.html" class="btn btn-ghost" style="font-size:16px;padding:15px 32px;">Get Personal
+          Edition — $29</a>
+      </div>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" class="footer-logo"><img src="images/logo_gdrivetosheet_dk.png" alt="GDrive To Sheet" /></a>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="license.html">License Agreement</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="contact.html">Contact</a>
+          <a href="support.html">Support &amp; FAQ</a>
+
+        </div>
+        <span class="footer-copy">© 2026 GDrive To Sheet. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

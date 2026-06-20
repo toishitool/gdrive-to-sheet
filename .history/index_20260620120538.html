@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDrive To Sheet – Google Drive File & Folder Export Tool</title>
+  <meta name="description"
+    content="Export entire Google Drive folder structures into Google Sheets. Visualize hierarchy, detect new files, identify empty folders, and understand large shared drives instantly." />
+  <meta name="keywords" content="Google Drive export, Google Sheets, folder structure, file audit, Drive to Sheet" />
+  <meta name="author" content="Toishi Tool" />
+  <meta property="og:title" content="GDrive To Sheet – Google Drive Export Tool" />
+  <meta property="og:description"
+    content="Stop digging through messy Google Drive folders. Export entire structures into Google Sheets in seconds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://toishitool.github.io/gdrive-to-sheet/" />
+  <link rel="canonical" href="https://toishitool.github.io/gdrive-to-sheet/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GDrive To Sheet",
+    "description": "Export entire Google Drive folder structures into Google Sheets. Visualize hierarchy, detect new files, identify empty folders.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web (Google Workspace)",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Version",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Personal Edition",
+        "price": "29",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Team Edition",
+        "price": "199",
+        "priceCurrency": "USD"
+      }
+    ],
+    "url": "https://toishitool.github.io/gdrive-to-sheet/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #00A586;
+      --primary-dark: #007A64;
+      --primary-deep: #005A4A;
+      --primary-light: #E6F7F3;
+      --primary-mid: #B3E8DC;
+      --text: #1A1A1A;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FFFFFF;
+      --bg-subtle: #F9FAFB;
+      --bg-dark: #0F1A18;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grid texture utility ── */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0, 165, 134, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 165, 134, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark) !important;
+      color: #fff !important;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 165, 134, 0.30);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 4px 16px rgba(0, 165, 134, 0.40);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.30);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.20);
+    }
+
+    /* ── Section labels ── */
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 40px 0 60px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 4.5fr 5.5fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero p.sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .trust-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-note svg {
+      flex-shrink: 0;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.18));
+      border-radius: 8px;
+    }
+
+    /* ── PAIN ── */
+    .pain {
+      padding: 80px 0;
+      background: var(--bg-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .pain-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-mid));
+    }
+
+    .pain-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    .pain-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .pain-explain {
+      text-align: center;
+      margin-top: 40px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pain-explain p {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .pain-explain strong {
+      color: var(--text);
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 80px 0;
+    }
+
+    .how-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .flow-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .flow-icon.gdrive {
+      background: #E8F4FF;
+    }
+
+    .flow-icon.tool {
+      background: var(--primary-light);
+    }
+
+    .flow-icon.sheets {
+      background: #E8F7E8;
+    }
+
+    .flow-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .flow-sublabel {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: -8px;
+    }
+
+    .flow-arrow {
+      font-size: 28px;
+      color: var(--primary);
+      padding: 0 24px;
+      font-weight: 300;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .step-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .step-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      letter-spacing: .06em;
+    }
+
+    .step-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 80px 0;
+      background: var(--bg-subtle);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+    }
+
+    .feat-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .feat-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feat-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .perf-block {
+      margin-top: 56px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+    }
+
+    .perf-block h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .perf-rows {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .perf-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .perf-count {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .perf-bar-wrap {
+      height: 6px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .perf-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 99px;
+    }
+
+    .perf-time {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .perf-disclaimer {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots {
+      padding: 80px 0;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .screenshot-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .screenshot-placeholder {
+      background: var(--primary-light);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .screenshot-item.main-shot {
+      grid-column: 1 / -1;
+    }
+
+    .screenshot-item.main-shot .screenshot-placeholder {
+      aspect-ratio: auto;
+      min-height: 340px;
+    }
+
+    .screenshot-item.main-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .screenshot-placeholder span {
+      font-size: 28px;
+    }
+
+    .screenshot-placeholder p {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .screenshot-label {
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: var(--bg-subtle);
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 80px 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .price-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+      background: #fff;
+      /* ★追加：ボタンを下に揃えるためのフレックスボックス化 */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(0, 165, 134, 0.08);
+    }
+
+    .price-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .price-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 16px;
+    }
+
+    .price-amount {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .price-now {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .price-was {
+      font-size: 18px;
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .price-launch {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    /* ★修正：直下のliだけを対象にするため、> li に変更してネスト崩れを防止 */
+    .price-features > li {
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* ★修正：直下のliのsvgだけを対象にする */
+    .price-features > li svg {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .price-features li.muted {
+      color: var(--text-muted);
+    }
+
+    .price-btn {
+      width: 100%;
+      text-align: center;
+      display: block;
+      /* ★追加：コンテンツ量が異なっても自動的に一番下に配置する */
+      margin-top: auto;
+    }
+
+    /* ── USE CASES ── */
+    .usecases {
+      padding: 72px 0;
+      background: var(--bg-subtle);
+    }
+
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .use-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .use-icon {
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .use-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 80px 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 26px;
+      background: var(--bg-subtle);
+    }
+
+    .faq-item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── TRUST ── */
+    .trust {
+      padding: 72px 0;
+      background: var(--primary-light);
+    }
+
+    .trust-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .trust h2 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .trust p {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .trust-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .trust-points li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .trust-points li .ticon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #F1F5F9;
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .disclaimer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 100px 0;
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 165, 134, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 165, 134, 0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .final-cta-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 36px;
+    }
+
+    .final-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 0 28px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo img {
+      height: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Dark mode ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F1A18;
+        --bg-subtle: #141F1D;
+        --text: #F1F5F4;
+        --text-muted: #8B9E9B;
+        --text-light: #5C726E;
+        --border: #1F302D;
+        --primary-light: #0D2420;
+      }
+
+      nav {
+        background: rgba(15, 26, 24, 0.92);
+      }
+
+      .pain-card,
+      .feat-card,
+      .price-card,
+      .step-card,
+      .use-card,
+      .faq-item,
+      .perf-block {
+        background: #141F1D;
+      }
+
+      .screenshot-placeholder {
+        background: #0D2420;
+      }
+
+      .disclaimer {
+        background: #0A1210;
+      }
+    }
+
+        /* Notice Block */
+    .notice-block {
+      border-left: 3px solid var(--text-light);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 40px;
+      background: #F1F5F9;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+    }
+
+    .notice-block p {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 900px;
+  margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-content {
+        order: 2;
+      }
+
+      .hero-visual {
+        order: 1;
+        margin-bottom: 32px;
+        width: 100%;
+      }
+
+      .pain-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .perf-rows {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .use-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .screenshots-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .perf-rows {
+        grid-template-columns: 1fr;
+      }
+
+      .use-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .mockup-container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      filter: drop-shadow(0 24px 48px rgba(70, 146, 122, 0.18));
+    }
+
+    .mockup-frame {
+      display: block;
+      width: 100%;
+      height: auto;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .mockup-video {
+      position: absolute;
+      top: 3.3%;
+      left: 10.25%;
+      width: 80.1%;
+      height: 86.2%;
+      object-fit: cover;
+      z-index: 999;
+      border-radius: 4px;
+    }
+
+    /* 免責事項用の共通スタイル（審査対策） */
+.審査用-disclaimer-box {
+  background: #F1F5F9;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.審査用-disclaimer-box p {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+@media (prefers-color-scheme: dark) {
+  .審査用-disclaimer-box {
+    background: #0A1210;
+  }
+}
+#how-it-works {
+  position: relative;
+  /* 画像へのパスは、ご自身のフォルダ構造（例: images/howitworksBG.jpg）に合わせて調整してください */
+  background-image: url('images/howitworksBG.jpg'); 
+  background-size: cover;       /* 画面の横幅・縦幅に合わせて画像を綺麗にフィットさせる */
+  background-position: center;  /* 画像の中心を基準に配置 */
+  background-repeat: no-repeat; /* 画像の繰り返しを防止 */
+  
+  /* 以下はオプション：背景画像と文字が被って読みづらい場合の保険（白いオーバーレイをうっすら重ねる） */
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" />
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="free-download.html" class="nav-cta">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M12 2v13M5 9l7 7 7-7" />
+                <path d="M3 20h18" />
+              </svg>
+              Try Free Version
+            </a>
+        <!-- <a href="#pricing" class="nav-cta">Get Personal Edition</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero grid-bg" aria-label="Hero">
+    <div class="container" style="padding-right: 0;">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">Google Drive Visibility Tool</span>
+          <h1><em>Understand</em> Huge Shared Google Drive Folders in Minutes</h1>
+          <p class="sub">Export Google Drive folder structures into a searchable Google Sheet. Find new files, spot
+            empty folders, and understand large shared drives in minutes — not hours.</p>
+          <div class="hero-stats">
+            <ul class="price-features" style="gap: 0;">
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Tested with 50,000+ files & folders
+              </li>
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Automatic timeout recovery
+              </li>
+              <li>
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                No external server
+              </li>
+            </ul>
+          </div>
+          <div class="hero-btns">
+            <a href="free-download.html" class="btn btn-primary">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M12 2v13M5 9l7 7 7-7" />
+                <path d="M3 20h18" />
+              </svg>
+              Try Free Version
+            </a>
+            <a href="personal-edition.html" class="btn btn-secondary">Get Personal Edition — $29</a>
+          </div>
+          <p class="trust-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Works directly inside Google Sheets. No external server. Your data stays in your Google account.
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="mockup-container">
+            <video class="mockup-video" autoplay loop muted playsinline poster="images/video-poster.png">
+              <source src="images/gdrive-demo.mp4" type="video/mp4">
+            </video>
+            <img src="images/Macbook_Air_M2_Silver_Flatten.png"
+              alt="GDrive To Sheet running inside Google Sheets on a MacBook Air" class="mockup-frame" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+            <div class="notice-block">
+            <p><strong>Independent Software Notice:</strong> GDrive To Sheet is an independent standalone utility
+              product. It is not structurally affiliated with, endorsed by, or sponsored by Google LLC. Google Drive™,
+              Google Sheets™, and Google Workspace™ are registered functional trademarks of Google LLC.</p>
+          </div>
+<!-- FV直下の免責事項（Lemon Squeezy審査対策） -->
+  <div class="審査用-disclaimer-box">
+    <div class="container">
+      <p><strong>LEGAL DISCLAIMER:</strong> GDrive To Sheet is an <strong>independent, third-party software tool</strong>. It is NOT developed, affiliated with, endorsed, or sponsored by Google LLC. Google Drive™, Google Sheets™, and Google Workspace™ are trademarks of Google LLC.</p>
+    </div>
+  </div>
+
+  <section class="pain reveal" id="pain" aria-labelledby="pain-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Problem</span>
+        <h2 id="pain-heading">Why Shared Google Drives Become Impossible to Understand</h2>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">📁</div>
+          <h3>Client sends a shared folder with thousands of files — and no map.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔍</div>
+          <h3>Nobody knows where the newest files were uploaded.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🫥</div>
+          <h3>Empty folders waste time during audits and handovers.</h3>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🪏</div>
+          <h3>Important files are buried deep inside nested folder layers.</h3>
+        </div>
+      </div>
+      <div class="pain-explain">
+        <p>When a Google Drive grows to thousands of files, navigation becomes a <strong>manual investigation
+            process</strong>. GDrive To Sheet turns that structure into a searchable spreadsheet view — in seconds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how reveal" id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How It Works</span>
+        <h2 id="how-heading">Paste. Scan. Understand.</h2>
+      </div>
+
+      <div class="how-flow">
+        <div class="flow-node">
+          <div class="flow-icon gdrive">
+            <svg width="38" height="38" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z"
+                fill="#0066da" />
+              <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z"
+                fill="#00ac47" />
+              <path
+                d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z"
+                fill="#ea4335" />
+              <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d" />
+              <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc" />
+              <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z"
+                fill="#ffba00" />
+            </svg>
+          </div>
+          <div class="flow-label">Google Drive</div>
+          <div class="flow-sublabel">Your shared folder</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <div class="flow-icon tool">
+            <img src="images/logo_gdrivetosheet_square.svg" alt="" style="height:38px;" />
+          </div>
+          <div class="flow-label">GDrive To Sheet</div>
+          <div class="flow-sublabel">Runs inside Sheets</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <div class="flow-icon sheets">
+            <svg width="38" height="38" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm0-4H7v-2h5v2zm0-4H7V7h5v2zm5 8h-3v-2h3v2zm0-4h-3v-2h3v2zm0-4h-3V7h3v2z"
+                fill="#0F9D58" />
+            </svg>
+          </div>
+          <div class="flow-label">Google Sheets</div>
+          <div class="flow-sublabel">Full structured view</div>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 01</div>
+          <h3>Paste a Google Drive folder URL</h3>
+          <p>Open the tool inside Google Sheets and paste any Google Drive folder URL — shared drives and My Drive both
+            work.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 02</div>
+          <h3>Run the export</h3>
+          <p>Click Export Structure. The tool scans folders and files recursively using Google Apps Script — no external
+            server required.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 03</div>
+          <h3>View the entire structure in Google Sheets</h3>
+          <p>Your full folder tree appears as a spreadsheet: sizes, hierarchy, new files highlighted, empty folders
+            flagged, rows grouped by level.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features reveal" id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Features</span>
+        <h2 id="features-heading">Built For Large Drive Audits</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <span class="feat-icon">🌳</span>
+          <h3>Full Folder Tree Export</h3>
+          <p>Export folders and files into a structured spreadsheet hierarchy that mirrors your exact Drive structure —
+            level by level.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">❇️</span>
+          <h3>New File Detection</h3>
+          <p>Highlight newly added files and folders compared to a previous export. Instantly see what changed without
+            digging through Drive.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🫥</span>
+          <h3>Empty Folder Visibility</h3>
+          <p>Find empty folders via folder tree exports without manually opening every directory. Surface dead weight before your next handover.
+          </p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🌡️</span>
+          <h3>Size Heatmap</h3>
+          <p>Large folders and files become visually obvious using automatic color indicators. Spot storage hogs at a
+            glance.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🗃️</span>
+          <h3>Google Sheets Grouping</h3>
+          <p>Collapse and expand folder levels directly in Sheets using native row grouping. Navigate thousands of rows
+            without confusion.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">⚡</span>
+          <h3>Large Dataset Support</h3>
+          <p>Supports very large Google Drive structures using automatic resume processing — no timeout issues even at
+            50k+ items.</p>
+        </div>
+      </div>
+
+      <div class="perf-block reveal">
+        <h3>Performance at Scale</h3>
+        <div class="perf-rows">
+          <div class="perf-row">
+            <span class="perf-count">~250 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:5%"></div>
+            </div>
+            <span class="perf-time">~5 seconds</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~2,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:20%"></div>
+            </div>
+            <span class="perf-time">~30 seconds</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~15,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:55%"></div>
+            </div>
+            <span class="perf-time">1.5 – 2 min</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-count">~53,000 items</span>
+            <div class="perf-bar-wrap">
+              <div class="perf-bar" style="width:100%"></div>
+            </div>
+            <span class="perf-time">Auto-resume processing</span>
+          </div>
+        </div>
+        <p class="perf-disclaimer">Actual performance depends on Google Workspace limits and your account environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screenshots reveal" id="screenshots" aria-labelledby="screenshots-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Product Screenshot</span>
+        <h2 id="screenshots-heading">See Your Drive Structure At A Glance</h2>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-item main-shot" style="border: 0">
+          <img src="images/Macbook_Air_M2_Silver_slim.png"
+            alt="GDrive To Sheet tree hierarchy export inside Google Sheets" style="width:100%; display:block;" />
+          <div class="screenshot-label">📊 Full tree hierarchy export — folders, files, sizes, depth levels, all in one
+            sheet</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot01.png" alt="New files highlighted in Google Sheets after folder export"
+            style="width:100%; display:block;" />
+          <div class="screenshot-label">❇️ New files highlighted since previous export</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot02.png" alt="Storage usage heatmap in Google Sheets"
+            style="width:100%; display:block;" />
+          <div class="screenshot-label">🌡️ Size heatmap — color-coded storage usage</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot03.png" alt="Collapsible folder hierarchy groups" style="width:100%; display:block;" />
+          <div class="screenshot-label">🗃️ Native Sheets grouping — collapse/expand folder levels</div>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/spot04.png" alt="Empty folders automatically detected" style="width:100%; display:block;" />
+          <div class="screenshot-label">🌳 Identify empty folders at a glance from the exported folder tree</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing reveal" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Pricing</span>
+        <h2 id="pricing-heading">Choose Your Edition</h2>
+        <p>Try it free with up to 50 items. Upgrade for unlimited exports.</p>
+        <p class="pricing-badges" style="
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+">
+          <span style="
+    background: var(--bg-muted, #f4f4f5); 
+    color: var(--text-main); 
+    padding: 6px 20px; 
+    border-radius: 30px; 
+    font-size: 14px; 
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  ">
+            <span>One-time purchase</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
+            <span>Lifetime license</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
+            <span>No subscription</span>
+          </span>
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Free Version</div>
+          <div class="price-amount">
+            <span class="price-now">$0</span>
+          </div>
+          <div class="price-launch" style="height:18px"></div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Export up to <strong>50 items</strong></span>
+            </li>
+            <li style="display: block;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>All core features included</span>
+              </div>
+              <ul style="list-style: none; padding-left: 25px; margin-top: 10px; display: flex; flex-direction: column; gap: 12px;">
+  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+    <span style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+    <span>Folder tree export</span>
+  </li>
+  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+    <span style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+    <span>New file highlighting</span>
+  </li>
+  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+    <span style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+    <span>Size heatmap</span>
+  </li>
+  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+    <span style="width: 6px; height: 6px; background-color: #28a745; border-radius: 50%; flex-shrink: 0;"></span>
+    <span>Grouping features</span>
+  </li>
+</ul>
+             
+            </li>
+          </ul>
+          <a href="free-download.html" class="btn btn-secondary price-btn">Download Free</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-name">Personal Edition</div>
+          <div class="price-amount">
+            <span class="price-now">$29</span>
+            <span class="price-was">$49</span>
+          </div>
+          <div class="price-launch">🎉 Launch price — save $20</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Unlimited exports</strong></span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>All core features included</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Auto-resume processing</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Tested on datasets with 50,000+ items</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Single user license</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Personal use only</span>
+            </li>
+          </ul>
+          <a href="personal-edition.html" class="btn btn-primary price-btn">Buy Personal Edition</a>
+        </div>
+<div class="price-card" style="border-color: #AFB51A; box-shadow: 0 4px 24px rgba(175,181,26,0.08);">
+  <span class="price-badge" style="background: #AFB51A; color: #1A1F00;">For Teams</span>
+  
+  <div class="price-name">Team Edition</div>
+  <div class="price-amount">
+    <span class="price-now">$199</span>
+    <span class="price-was">$299</span>
+  </div>
+  <div class="price-launch" style="color: #AFB51A;">🎉 Launch price — save $100</div>
+  <div class="price-divider"></div>
+  
+  <ul class="price-features">
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span><strong>Unlimited exports</strong></span>
+    </li>
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span>All core features included</span>
+    </li>
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span>Auto-resume processing</span>
+    </li>
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span>Tested on datasets with 50,000+ items</span>
+    </li>
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span>Company / agency use</span>
+    </li>
+    <li>
+      <svg width="15" height="15" fill="none" stroke="#AFB51A" stroke-width="2.5" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span>Internal team sharing</span>
+    </li>
+  </ul>
+
+  <a href="team-edition.html" class="btn btn-secondary price-btn" 
+     style="color: #AFB51A; border-color: #AFB51A;"
+     onmouseover="this.style.background='#F5F6E0';" 
+     onmouseout="this.style.background='#fff';">
+    Buy Team Edition
+  </a>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usecases reveal" id="usecases" aria-labelledby="use-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Use Cases</span>
+        <h2 id="use-heading">Perfect For</h2>
+      </div>
+      <div class="use-grid">
+        <div class="use-card">
+          <span class="use-icon">💼</span>
+          <h3>Client Drive Audits</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🎬</span>
+          <h3>Video Production Projects</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">📣</span>
+          <h3>Marketing Asset Libraries</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🤝</span>
+          <h3>Agency Handover Reviews</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">📚</span>
+          <h3>Knowledge Base Organization</h3>
+        </div>
+        <div class="use-card">
+          <span class="use-icon">🗄️</span>
+          <h3>Large Archive Cleanup</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq reveal" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-heading">Common Questions</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Is this a cloud service?</h3>
+          <p>No. Everything runs inside your Google account using Google Apps Script and Google Sheets. Nothing is
+            hosted externally.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do my files leave Google Drive?</h3>
+          <p>No. No external server is involved. All processing happens within your own Google account.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does this work with Shared Drives?</h3>
+          <p>Yes — if your account has the appropriate access permissions to the shared drive or folder.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I scan my entire My Drive?</h3>
+          <p>Yes. You can point it at any folder URL, including the root of your My Drive.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I use this for Dropbox or OneDrive?</h3>
+          <p>No. This product only supports Google Drive URLs. It is purpose-built for Google Workspace.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need a paid Google Workspace plan?</h3>
+          <p>No. It works with standard Google accounts, subject to standard Google Apps Script execution limits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust reveal" id="trust" aria-labelledby="trust-heading">
+    <div class="container">
+      <div class="trust-inner">
+        <div>
+          <span class="eyebrow">Privacy First</span>
+          <h2 id="trust-heading">Your data never leaves Google.</h2>
+          <p style="margin-top:12px">GDrive To Sheet is designed around a single principle: your files are yours. No
+            signups, no external servers, no file uploads to anyone.</p>
+        </div>
+        <ul class="trust-points">
+          <li>
+            <div class="ticon">🔒</div>
+            No external database or server
+          </li>
+          <li>
+            <div class="ticon">🚫</div>
+            No file uploads to our servers
+          </li>
+          <li>
+            <div class="ticon">✅</div>
+            Runs entirely inside the Google ecosystem
+          </li>
+          <li>
+            <div class="ticon">🎛️</div>
+            You keep full control of your data
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+<!-- フッター上の免責事項（強化版） -->
+  <div class="審査用-disclaimer-box" style="padding: 24px 0;">
+    <div class="container">
+      <p><strong>Important Notice:</strong> This product is an independent tool and is not affiliated with, endorsed by, or sponsored by Google LLC. GDrive To Sheet operates as a third-party automation script within the Google Workspace environment. Google Drive, Google Sheets, and Google Workspace are trademarks of Google LLC.</p>
+    </div>
+  </div>
+
+  <section class="final-cta" aria-labelledby="cta-heading">
+    <div class="container final-cta-inner">
+      <span class="eyebrow" style="background:rgba(0,165,134,0.2);color:#6EDEC8;">Start Your First Export</span>
+      <h2 id="cta-heading">Stop Exploring Drive Folders One Click At A Time</h2>
+      <p>Understand entire folder structures in minutes — not hours.</p>
+      <div class="final-cta-btns">
+        <a href="#" class="btn btn-primary" style="font-size:16px;padding:15px 32px;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M12 2v13M5 9l7 7 7-7" />
+            <path d="M3 20h18" />
+          </svg>
+          Try Free Version
+        </a>
+        <a href="personal-edition.html" class="btn btn-ghost" style="font-size:16px;padding:15px 32px;">Get Personal Edition — $29</a>
+      </div>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" class="footer-logo"><img src="images/logo_gdrivetosheet_dk.png" alt="GDrive To Sheet" /></a>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="license.html">License Agreement</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="contact.html">Contact</a>
+          <a href="support.html">Support &amp; FAQ</a>
+          
+        </div>
+        <span class="footer-copy">© 2026 GDrive To Sheet. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

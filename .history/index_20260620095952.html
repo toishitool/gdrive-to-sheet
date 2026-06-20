@@ -64,11 +64,11 @@
     }
 
     :root {
-      --green: #00A586;
-      --green-dark: #007A64;
-      --green-deep: #005A4A;
-      --green-light: #E6F7F3;
-      --green-mid: #B3E8DC;
+      --primary: #00A586;
+      --primary-dark: #007A64;
+      --primary-deep: #005A4A;
+      --primary-light: #E6F7F3;
+      --primary-mid: #B3E8DC;
       --text: #1A1A1A;
       --text-muted: #6B7280;
       --text-light: #9CA3AF;
@@ -147,11 +147,11 @@
     }
 
     .nav-links a:hover {
-      color: var(--green);
+      color: var(--primary);
     }
 
     .nav-cta {
-      background: var(--green);
+      background: var(--primary);
       color: #fff !important;
       padding: 8px 18px;
       border-radius: 8px;
@@ -162,7 +162,7 @@
     }
 
     .nav-cta:hover {
-      background: var(--green-dark) !important;
+      background: var(--primary-dark) !important;
       color: #fff !important;
     }
 
@@ -190,25 +190,25 @@
     }
 
     .btn-primary {
-      background: var(--green);
+      background: var(--primary);
       color: #fff;
       box-shadow: 0 2px 8px rgba(0, 165, 134, 0.30);
     }
 
     .btn-primary:hover {
-      background: var(--green-dark);
+      background: var(--primary-dark);
       box-shadow: 0 4px 16px rgba(0, 165, 134, 0.40);
       transform: translateY(-1px);
     }
 
     .btn-secondary {
       background: #fff;
-      color: var(--green);
-      border: 1.5px solid var(--green);
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
     }
 
     .btn-secondary:hover {
-      background: var(--green-light);
+      background: var(--primary-light);
       transform: translateY(-1px);
     }
 
@@ -229,8 +229,8 @@
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--green);
-      background: var(--green-light);
+      color: var(--primary);
+      background: var(--primary-light);
       padding: 4px 12px;
       border-radius: 100px;
       margin-bottom: 16px;
@@ -266,7 +266,7 @@
 
     .hero h1 em {
       font-style: normal;
-      color: var(--green);
+      color: var(--primary);
     }
 
     .hero p.sub {
@@ -353,13 +353,13 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--green), var(--green-mid));
+      background: linear-gradient(90deg, var(--primary), var(--primary-mid));
     }
 
     .pain-icon {
       width: 44px;
       height: 44px;
-      background: var(--green-light);
+      background: var(--primary-light);
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -429,7 +429,7 @@
     }
 
     .flow-icon.tool {
-      background: var(--green-light);
+      background: var(--primary-light);
     }
 
     .flow-icon.sheets {
@@ -450,7 +450,7 @@
 
     .flow-arrow {
       font-size: 28px;
-      color: var(--green);
+      color: var(--primary);
       padding: 0 24px;
       font-weight: 300;
     }
@@ -473,7 +473,7 @@
     .step-num {
       font-size: 13px;
       font-weight: 700;
-      color: var(--green);
+      color: var(--primary);
       margin-bottom: 10px;
       letter-spacing: .06em;
     }
@@ -568,7 +568,7 @@
 
     .perf-bar {
       height: 100%;
-      background: var(--green);
+      background: var(--primary);
       border-radius: 99px;
     }
 
@@ -605,7 +605,7 @@
     }
 
     .screenshot-placeholder {
-      background: var(--green-light);
+      background: var(--primary-light);
       aspect-ratio: 16/9;
       display: flex;
       flex-direction: column;
@@ -636,7 +636,7 @@
     .screenshot-placeholder p {
       font-size: 13px;
       font-weight: 600;
-      color: var(--green-dark);
+      color: var(--primary-dark);
     }
 
     .screenshot-label {
@@ -672,7 +672,7 @@
     }
 
     .price-card.featured {
-      border-color: var(--green);
+      border-color: var(--primary);
       box-shadow: 0 0 0 4px rgba(0, 165, 134, 0.08);
     }
 
@@ -680,7 +680,7 @@
       position: absolute;
       top: -12px;
       right: 20px;
-      background: var(--green);
+      background: var(--primary);
       color: #fff;
       font-size: 11px;
       font-weight: 700;
@@ -722,7 +722,7 @@
 
     .price-launch {
       font-size: 12px;
-      color: var(--green);
+      color: var(--primary);
       font-weight: 600;
       margin-bottom: 24px;
     }
@@ -834,7 +834,7 @@
     /* ── TRUST ── */
     .trust {
       padding: 72px 0;
-      background: var(--green-light);
+      background: var(--primary-light);
     }
 
     .trust-inner {
@@ -874,7 +874,7 @@
     .trust-points li .ticon {
       width: 36px;
       height: 36px;
-      background: var(--green);
+      background: var(--primary);
       border-radius: 9px;
       display: flex;
       align-items: center;
@@ -1007,7 +1007,7 @@
         --text-muted: #8B9E9B;
         --text-light: #5C726E;
         --border: #1F302D;
-        --green-light: #0D2420;
+        --primary-light: #0D2420;
       }
 
       nav {
@@ -1229,19 +1229,19 @@
           <div class="hero-stats">
             <ul class="price-features" style="gap: 0;">
               <li>
-                <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 Tested with 50,000+ files & folders
               </li>
               <li>
-                <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 Automatic timeout recovery
               </li>
               <li>
-                <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 No external server
@@ -1259,7 +1259,7 @@
             <a href="personal-edition.html" class="btn btn-secondary">Get Personal Edition — $29</a>
           </div>
           <p class="trust-note">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
             Works directly inside Google Sheets. No external server. Your data stays in your Google account.
@@ -1530,9 +1530,9 @@
     justify-content: center;
   ">
             <span>One-time purchase</span>
-            <span style="color: var(--green); font-size: 16px; line-height: 1;">•</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
             <span>Lifetime license</span>
-            <span style="color: var(--green); font-size: 16px; line-height: 1;">•</span>
+            <span style="color: var(--primary); font-size: 16px; line-height: 1;">•</span>
             <span>No subscription</span>
           </span>
         </p>
@@ -1547,14 +1547,14 @@
           <div class="price-divider"></div>
           <ul class="price-features">
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Export up to <strong>50 items</strong></span>
             </li>
             <li style="display: block;">
               <div style="display: flex; align-items: center; gap: 10px;">
-                <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+                <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 <span>All core features included</span>
@@ -1593,37 +1593,37 @@
           <div class="price-divider"></div>
           <ul class="price-features">
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span><strong>Unlimited exports</strong></span>
             </li>
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>All core features included</span>
             </li>
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Auto-resume processing</span>
             </li>
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Tested on datasets with 50,000+ items</span>
             </li>
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Single user license</span>
             </li>
             <li>
-              <svg width="15" height="15" fill="none" stroke="var(--green)" stroke-width="2.5" viewBox="0 0 24 24">
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Personal use only</span>

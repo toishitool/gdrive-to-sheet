@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support &amp; FAQ – GDrive To Sheet</title>
+  <meta name="description"
+    content="Welcome to the GDrive To Sheet Support Center. Find frequently asked questions, troubleshooting guides, platform limitations, and contact details." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://toishitool.github.io/gdrive-to-sheet/support.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #00A586;
+      --primary-dark: #007A64;
+      --primary-light: #E6F7F3;
+      --text: #1A1A1A;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FFFFFF;
+      --bg-subtle: #F9FAFB;
+      --bg-dark: #0F1A18;
+      --accent-blue: #2563EB;
+      --accent-blue-light: #EFF6FF;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    nav.global-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+    }
+
+    .nav-back {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+
+    .nav-back:hover {
+      color: var(--primary);
+    }
+
+    /* Layout */
+    .page-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Header */
+    .page-header {
+      max-width: 760px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-dot {
+      color: var(--border);
+    }
+
+    /* Intro block */
+    .intro-block {
+      max-width: 760px;
+      background: var(--primary-light);
+      border: 1px solid #B3E8DC;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .intro-block .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .intro-block p {
+      font-size: 15px;
+      color: var(--primary-dark);
+      line-height: 1.6;
+    }
+
+    .intro-block strong {
+      font-weight: 700;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    /* Sections */
+    .support-section {
+      margin-bottom: 48px;
+    }
+
+    .support-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .support-section h2 .section-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 9px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    .support-section>p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Checklist Card */
+    .checklist-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .checklist-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checklist-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .checklist-item .check-icon {
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Accordion (Common Issues & FAQ) */
+    .accordion {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-item:hover {
+      border-color: var(--primary);
+    }
+
+    .accordion-trigger {
+      display: none;
+    }
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--bg);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      transition: background .2s;
+      user-select: none;
+    }
+
+    .accordion-header:hover {
+      background: var(--bg-subtle);
+    }
+
+    .accordion-header .arrow-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      transition: transform 0.3s ease, color 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      background: var(--bg-subtle);
+    }
+
+    .accordion-content-inner {
+      padding: 20px 24px;
+      font-size: 15px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-content-inner p {
+      margin-bottom: 12px;
+    }
+
+    .accordion-content-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    .accordion-content h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .accordion-content ul {
+      list-style: none;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .accordion-content ul li {
+      color: var(--text-muted);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    .accordion-content ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .accordion-content ul li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* CSS Trigger Logic for Accordion */
+    .accordion-trigger:checked~.accordion-header .arrow-icon {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .accordion-trigger:checked~.accordion-content {
+      max-height: 2000px;
+      transition: max-height 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    }
+
+    /* Highlight card */
+    .highlight-card {
+      background: var(--primary-light);
+      border: 1px solid rgba(0, 165, 134, 0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 12px 0 0;
+    }
+
+    .highlight-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--primary-dark);
+    }
+
+    /* Tables (Product Versions) */
+    .table-responsive {
+      overflow-x: auto;
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    table.v-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    table.v-table th,
+    table.v-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    table.v-table th {
+      background: var(--bg-subtle);
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    table.v-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.v-table td strong {
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    table.v-table td .desc {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    table.v-table td ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    table.v-table td ul li {
+      display: flex;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    table.v-table td ul li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Contact & Status Grid */
+    .status-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .info-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Support Request Details */
+    .email-box {
+      margin: 16px 0;
+    }
+
+    .email-link {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(0, 165, 134, 0.2);
+      transition: border-color .2s;
+    }
+
+    .email-link:hover {
+      border-color: var(--primary);
+    }
+
+    .info-card ul {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .info-card ul li {
+      display: flex;
+      gap: 8px;
+    }
+
+    .info-card ul li::before {
+      content: '•';
+      color: var(--text-light);
+    }
+
+    /* Notice Block */
+    .notice-block {
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-light);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 40px;
+    }
+
+    .notice-block p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Divider */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* ==========================================================================
+       SIDEBAR & TOC LOGIC
+       ========================================================================= */
+    .toc-trigger-input {
+      display: none;
+    }
+
+    .toc-trigger-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 165, 134, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .toc-trigger-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .toc-trigger-btn .icon-close {
+      display: none;
+    }
+
+    .toc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+      background: var(--bg);
+      padding: 40px 24px 120px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+    }
+
+    .toc h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      counter-reset: toc;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+    }
+
+    .toc ol li a {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 4px 0;
+      transition: color .2s;
+    }
+
+    .toc ol li a:hover {
+      color: var(--primary);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      min-width: 24px;
+    }
+
+    .toc-trigger-input:checked~.toc {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .toc-trigger-input:checked~.toc-trigger-btn {
+      background: #EF4444;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    }
+
+    .toc-trigger-input:checked~.toc-trigger-btn .icon-open {
+      display: none;
+    }
+
+    .toc-trigger-input:checked~.toc-trigger-btn .icon-close {
+      display: inline;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 0 28px;
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo img {
+      height: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Dark mode overrides */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F1A18;
+        --bg-subtle: #141F1D;
+        --text: #F1F5F4;
+        --text-muted: #8B9E9B;
+        --text-light: #5C726E;
+        --border: #1F302D;
+        --primary-light: #0D2420;
+      }
+
+      nav.global-nav {
+        background: rgba(15, 26, 24, 0.92);
+      }
+
+      .accordion-item {
+        background: var(--bg-subtle);
+      }
+
+      .accordion-content {
+        background: #122421;
+      }
+
+      table.v-table {
+        background: var(--bg);
+      }
+
+      .highlight-card {
+        background: var(--primary-light);
+        border-color: rgba(0, 165, 134, 0.1);
+      }
+    }
+
+    /* Desktop Responsive Layout */
+    @media (min-width: 1024px) {
+      .content-layout {
+        grid-template-columns: 760px 280px;
+        justify-content: space-between;
+      }
+
+      .toc-trigger-btn {
+        display: none;
+      }
+
+      .toc {
+        position: sticky;
+        top: 100px;
+        margin-bottom: 0;
+        padding: 24px;
+        background: var(--bg-subtle);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+
+      .toc h3 {
+        font-size: 12px;
+        margin-bottom: 12px;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .toc ol {
+        gap: 8px;
+      }
+
+      .toc ol li a {
+        font-size: 14px;
+        padding: 0;
+      }
+
+      .status-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-header h1 {
+        font-size: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="global-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo_gdrivetosheet.png" alt="GDrive To Sheet" />
+      </a>
+      <a href="index.html" class="nav-back">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrap">
+
+      <header class="page-header">
+        <span class="eyebrow">Support &amp; FAQ</span>
+        <h1>Support Resources &amp; FAQ</h1>
+        <div class="meta">
+          <span>GDrive To Sheet Support Center</span>
+          <span class="meta-dot">·</span>
+          <span id="last-updated">Last updated: —</span>
+        </div>
+      </header>
+
+      <div class="intro-block">
+        <span class="icon">💡</span>
+        <p>Have questions or encountering issues with <strong>GDrive To Sheet</strong>? Check the quick checklist and find quick answers below regarding technical capabilities, troubleshooting, security, and licensing options.</p>
+      </div>
+
+      <div class="content-layout">
+
+        <div class="main-content">
+
+          <section class="support-section" id="s1">
+            <h2><span class="section-num">01</span>Quick Start Checklist</h2>
+            <p>Before requesting support, please confirm the following basic settings to ensure the script can run properly:</p>
+            <div class="checklist-card">
+              <div class="checklist-grid">
+                <div class="checklist-item"><span class="check-icon">✓</span><span>You are signed into the correct Google account.</span></div>
+                <div class="checklist-item"><span class="check-icon">✓</span><span>You have access permissions to the target Google Drive folder.</span></div>
+                <div class="checklist-item"><span class="check-icon">✓</span><span>Google Apps Script permissions have been granted.</span></div>
+                <div class="checklist-item"><span class="check-icon">✓</span><span>The folder URL is a valid Google Drive URL.</span></div>
+                <div class="checklist-item"><span class="check-icon">✓</span><span>You are using the latest version of the product.</span></div>
+              </div>
+            </div>
+          </section>
+          <div class="section-divider"></div>
+
+          <section class="support-section" id="s2">
+            <h2><span class="section-num">02</span>Common Issues &amp; Solutions</h2>
+            <p>Click on any problem statement below to reveal details and recommended corrective actions.</p>
+
+            <div class="accordion">
+              <div class="accordion-item">
+                <input type="checkbox" id="issue-1" class="accordion-trigger" />
+                <label for="issue-1" class="accordion-header">
+                  <span>The export does not start</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <h4>Possible Causes:</h4>
+                    <ul>
+                      <li>Missing Google permissions</li>
+                      <li>Invalid folder URL</li>
+                      <li>Temporary Google service issue</li>
+                    </ul>
+                    <h4>Recommended Action:</h4>
+                    <p>Re-authorize permissions within your Google account environment and try executing the export operation again.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="issue-2" class="accordion-trigger" />
+                <label for="issue-2" class="accordion-header">
+                  <span>Shared Drive cannot be scanned</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <h4>Possible Causes:</h4>
+                    <ul>
+                      <li>Missing Shared Drive access</li>
+                      <li>Insufficient organization permissions</li>
+                    </ul>
+                    <h4>Recommended Action:</h4>
+                    <p>Verify that your active Google account has proper access rights and membership roles to the target Shared Drive structure.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="issue-3" class="accordion-trigger" />
+                <label for="issue-3" class="accordion-header">
+                  <span>Processing takes a long time</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Large Google Drive structures may require multiple execution cycles due to structural depth. <strong>This is normal.</strong></p>
+                    <p>The product includes an automatic resume functionality built-in for handling large datasets securely over continuous intervals.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="issue-4" class="accordion-trigger" />
+                <label for="issue-4" class="accordion-header">
+                  <span>Some files do not appear</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <h4>Possible Causes:</h4>
+                    <ul>
+                      <li>Insufficient individual file permissions</li>
+                      <li>Restricted enterprise files</li>
+                      <li>Recently modified Google Drive data syncing latency</li>
+                    </ul>
+                    <h4>Recommended Action:</h4>
+                    <p>Try running the export execution process again after explicitly confirming permissions on the missing files.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="issue-5" class="accordion-trigger" />
+                <label for="issue-5" class="accordion-header">
+                  <span>New File Detection is not working</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>New File Detection mechanisms require a previous base export file generated from the exact same folder structure.</p>
+                    <p>Ensure that you are comparing and scanning the same Google Drive target location mapping.</p>
+                    <p>New File Detection is based on Google Drive item identity rather than folder position.</p>
+                    <p>As a result, moving an existing file or folder to a different location within the same Google Drive structure will generally NOT cause it to be detected as a new item.</p>
+                    <p>The following actions are typically detected as new:</p>
+                    <ul>
+                      <li>Newly uploaded files</li>
+                      <li>Newly created folders</li>
+                      <li>Newly copied files</li>
+                    </ul>
+                    <p>The following actions are generally NOT detected as new:</p>
+                    <ul>
+                      <li>Moving an existing file to another folder</li>
+                      <li>Moving an existing folder to another location</li>
+                      <li>Renaming files</li>
+                      <li>Renaming folders</li>
+                    </ul>
+                    <p>This behavior is intentional and helps prevent existing items from being incorrectly flagged as new simply because their location changed.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="section-divider"></div>
+
+          <section class="support-section" id="s3">
+            <h2><span class="section-num">03</span>Frequently Asked Questions</h2>
+            <p>Explore general questions regarding product capabilities, technical specs, privacy, and licensing.</p>
+
+            <div class="accordion">
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q1" class="accordion-trigger" />
+                <label for="faq-q1" class="accordion-header">
+                  <span>[Overview] What is GDrive To Sheet?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>GDrive To Sheet exports Google Drive folder structures into Google Sheets, allowing you to visualize folders, files, hierarchy, storage usage, and newly added items.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q2" class="accordion-trigger" />
+                <label for="faq-q2" class="accordion-header">
+                  <span>[Overview] Who is this tool for?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>This tool is commonly used by:</p>
+                    <ul>
+                      <li><strong>Freelancers</strong></li>
+                      <li><strong>Agencies</strong></li>
+                      <li><strong>Video editors</strong></li>
+                      <li><strong>Marketing teams</strong></li>
+                      <li><strong>Consultants</strong></li>
+                      <li><strong>Project managers</strong></li>
+                      <li><strong>Anyone</strong> working with large Google Drive structures</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q3" class="accordion-trigger" />
+                <label for="faq-q3" class="accordion-header">
+                  <span>[Tech] Does this work with Shared Drives?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Yes. The tool supports Shared Drives that your Google account has permission to access.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q4" class="accordion-trigger" />
+                <label for="faq-q4" class="accordion-header">
+                  <span>[Tech] Can I scan my entire My Drive?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Yes. You can export your complete My Drive structure, subject to Google Apps Script execution limits.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q6" class="accordion-trigger" />
+                <label for="faq-q6" class="accordion-header">
+                  <span>[Tech] Does this work with Dropbox, OneDrive, Box, or other storage services?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>No. GDrive To Sheet only supports Google Drive URLs.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q7" class="accordion-trigger" />
+                <label for="faq-q7" class="accordion-header">
+                  <span>[Security] Does the tool upload my files to external servers?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>No. The tool runs within your own Google account using Google Apps Script and Google Sheets.</p>
+                    <p>No file contents are uploaded to our servers.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q8" class="accordion-trigger" />
+                <label for="faq-q8" class="accordion-header">
+                  <span>[Security] What information is exported?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>The tool exports metadata including:</p>
+                    <ul>
+                      <li>Folder names</li>
+                      <li>File names</li>
+                      <li>Folder hierarchy</li>
+                      <li>File links</li>
+                      <li>File sizes (when available)</li>
+                    </ul>
+                    <p>The actual file contents are not exported.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q9" class="accordion-trigger" />
+                <label for="faq-q9" class="accordion-header">
+                  <span>[Features] Can I detect newly added files?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Yes. The tool can compare previous exports and highlight newly discovered files and folders.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q10" class="accordion-trigger" />
+                <label for="faq-q10" class="accordion-header">
+                  <span>[Features] Can I identify empty folders?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Yes. Empty folders become immediately visible within the exported hierarchy.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q11" class="accordion-trigger" />
+                <label for="faq-q11" class="accordion-header">
+                  <span>[Features] What is the Size Heatmap feature?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>The Size Heatmap automatically highlights large files and folders using color intensity, making storage-heavy areas easier to identify.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q12" class="accordion-trigger" />
+                <label for="faq-q12" class="accordion-header">
+                  <span>[Performance] How large of a Drive can be processed?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>The tool is designed to handle both small and very large Google Drive structures.</p>
+                    <p>Example processing times:</p>
+                    <ul>
+                      <li><strong>~250 items:</strong> approximately 5 seconds</li>
+                      <li><strong>~2,000 items:</strong> approximately 30 seconds</li>
+                      <li><strong>~15,000 items:</strong> approximately 1.5–2 minutes</li>
+                    </ul>
+                    <p>Larger datasets may automatically resume processing. Actual performance depends on Google limitations and account conditions.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q13" class="accordion-trigger" />
+                <label for="faq-q13" class="accordion-header">
+                  <span>[Performance] What happens if Google Apps Script reaches its execution limit?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>The tool includes an automatic resume system that can continue processing large datasets when execution time limits are reached.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q14" class="accordion-trigger" />
+                <label for="faq-q14" class="accordion-header">
+                  <span>[Setup] Is installation required?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>No. The product is delivered as a Google Sheets template with integrated Google Apps Script functionality.</p>
+                    <p>No software installation is required.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q17" class="accordion-trigger" />
+                <label for="faq-q17" class="accordion-header">
+                  <span>[License] Do I receive future updates?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>Updates may be provided at the creator's discretion. Major future versions may require separate licensing.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <input type="checkbox" id="faq-q18" class="accordion-trigger" />
+                <label for="faq-q18" class="accordion-header">
+                  <span>[License] Is this an official Google product?</span>
+                  <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </label>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>No. GDrive To Sheet is an independent product and is not affiliated with, endorsed by, or sponsored by Google LLC.</p>
+                    <p>Google Drive and Google Sheets are trademarks of Google LLC.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="section-divider"></div>
+
+          <section class="support-section" id="s4">
+            <h2><span class="section-num">04</span>Google Platform Limitations</h2>
+            <p>GDrive To Sheet operates as an add-on solution that directly relies on the following native ecosystems:</p>
+            <ul style="list-style:none; padding-left:0; margin: 16px 0; display:flex; flex-direction:column; gap:8px;">
+              <li style="display:flex; gap:10px; color:var(--text-muted);">⚡ <strong>Google Drive</strong> — File repository mapping structures.</li>
+              <li style="display:flex; gap:10px; color:var(--text-muted);">⚡ <strong>Google Sheets</strong> — Destination output table generation.</li>
+              <li style="display:flex; gap:10px; color:var(--text-muted);">⚡ <strong>Google Apps Script</strong> — Engine executing calculations.</li>
+            </ul>
+            <p>Certain core limitations are structural parameters strictly imposed by Google Cloud platform policies, including <strong>API quotas, script execution time limits (e.g., 6-minute timeout per run), and corporate permission restrictions</strong>. These external limitations are outside the technical control of GDrive To Sheet.</p>
+          </section>
+          <div class="section-divider"></div>
+
+          <section class="support-section" id="s5">
+            <h2><span class="section-num">05</span>Product Editions</h2>
+            <p>Review standard features and operational scopes across different product license levels:</p>
+
+            <div class="table-responsive">
+              <table class="v-table">
+                <thead>
+                  <tr>
+                    <th>Edition</th>
+                    <th>Core Capability</th>
+                    <th>Export Scope</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Free Version</strong></td>
+                    <td>
+                      <ul>
+                        <li>Folder tree export</li>
+                        <li>New file highlighting</li>
+                        <li>Size heatmap</li>
+                        <li>Grouping features</li>
+                      </ul>
+                    </td>
+                    <td>Limited to <strong>50 exported items</strong> per run.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Personal Edition</strong></td>
+                    <td>
+                      <span class="desc">Designed exclusively for individual operators. Single-user license mapping.</span>
+                    </td>
+                    <td><strong>Unlimited</strong> item exports.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Team Edition</strong></td>
+                    <td>
+                      <span class="desc">Designed for companies, collaborative departments, and digital marketing agencies. Internal team sharing allowed.</span>
+                    </td>
+                    <td><strong>Unlimited</strong> item exports.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <div class="section-divider"></div>
+
+          <section class="support-section" id="s6">
+            <h2><span class="section-num">06</span>Contact Desk &amp; Status</h2>
+            <p>If your specific technical problem or billing query is not covered in the documentation above, please leverage our direct service channels:</p>
+
+            <div class="status-contact-grid">
+              <div class="info-card">
+                <h3>✉️ Request Human Support</h3>
+                <div class="email-box">
+                  <a href="mailto:toishitool@gmail.com" class="email-link">toishitool@gmail.com</a>
+                </div>
+                <p style="font-size: 14px; margin-bottom: 8px;"><strong>Please include the following for fast diagnostics:</strong></p>
+                <ul>
+                  <li>Product edition (Free, Personal, Team)</li>
+                  <li>Clear description of the issue</li>
+                  <li>Error message text (if available)</li>
+                  <li>Relevant screenshots (if applicable)</li>
+                </ul>
+                <p style="font-size: 13px; color: var(--text-light); margin-top: 14px;">🕒 Typical response time: Within 2 business days.</p>
+              </div>
+
+              <div class="info-card">
+                <h3>Google Platform Dependency</h3>
+                <p>GDrive To Sheet relies on Google Drive, Google Sheets, and Google Apps Script.</p>
+                <p>Occasionally, Google platform changes, API restrictions, permission updates, or temporary service disruptions may affect functionality.</p>
+                <p>If a known compatibility issue is identified, update information and recommended workarounds will be published on the official product website.</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="notice-block">
+            <p><strong>Independent Software Notice:</strong> GDrive To Sheet is an independent standalone utility product. It is not structurally affiliated with, endorsed by, or sponsored by Google LLC. Google Drive™, Google Sheets™, and Google Workspace™ are registered functional trademarks of Google LLC.</p>
+          </div>
+
+        </div>
+
+        <input type="checkbox" id="toc-toggle" class="toc-trigger-input" />
+
+        <label for="toc-toggle" class="toc-trigger-btn" aria-label="Toggle contents menu">
+          <svg class="icon-open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+            viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+            viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </label>
+
+        <nav class="toc" aria-label="Table of contents">
+          <h3>On This Page</h3>
+          <ol>
+            <li><a href="#s1" onclick="document.getElementById('toc-toggle').checked = false;">Quick Checklist</a></li>
+            <li><a href="#s2" onclick="document.getElementById('toc-toggle').checked = false;">Common Issues</a></li>
+            <li><a href="#s3" onclick="document.getElementById('toc-toggle').checked = false;">General FAQ</a></li>
+            <li><a href="#s4" onclick="document.getElementById('toc-toggle').checked = false;">Platform Limits</a></li>
+            <li><a href="#s5" onclick="document.getElementById('toc-toggle').checked = false;">Product Editions</a></li>
+            <li><a href="#s6" onclick="document.getElementById('toc-toggle').checked = false;">Contact Desk</a></li>
+          </ol>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo"><img src="images/logo_gdrivetosheet_dk.png" alt="GDrive To Sheet" /></a>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="license.html">License Agreement</a>
+        <a href="refund-policy.html">Refund Policy</a>
+        <a href="contact.html">Contact</a>
+        <a href="support.html">Support &amp; FAQ</a>
+        
+      </div>
+      <span class="footer-copy">© 2026 GDrive To Sheet. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Auto date script
+    const d = new Date();
+    const formatted = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('last-updated').textContent = 'Last updated: ' + formatted;
+  </script>
+
+</body>
+
+</html>

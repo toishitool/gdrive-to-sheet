@@ -1096,7 +1096,6 @@ nav {
   }
 
   .hero-grid {
-     grid-template-columns: none; 
          gap: 56px;
   }
 

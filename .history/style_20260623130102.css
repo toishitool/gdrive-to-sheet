@@ -3131,7 +3131,7 @@ nav {
 
 #modal-img {
   width: 100%;
-  max-height: 65vh;
+  max-height: 60vh;
   object-fit: contain;
   background: #000;
 }

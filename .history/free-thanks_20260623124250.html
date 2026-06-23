@@ -27,19 +27,7 @@
   <main>
 
     <!-- HERO / CONFIRMATION -->
-    <section class="hero grid-bg" style="padding: 64px 0 64px;">
-<img src="images/free-download-window.png" alt="Google Sheet Copy Document Interface" style="
-    position: absolute;
-    top: 35%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: auto;
-    opacity: 0.25;
-    z-index: 0;
-    pointer-events: none;
-  ">
-
+    <section class="hero">
       <div class="container">
         <div class="celebrate-icon">🎉</div>
         <h1>Thank You!</h1>
@@ -58,7 +46,7 @@
       </div>
     </section>
 
-    <div class="page-wrap" style="padding-bottom: 0;">
+    <div class="page-wrap">
       <div class="container" style="padding: 0;">
 
         <!-- Before You Start -->
@@ -94,21 +82,21 @@
             </ol>
           </div>
         </div>
-
+        
         <div class="step-card" data-step="1">
 
           <div class="step-card-head">
 
             <div class="step-num">2</div>
-            <h3>Confirm Authorization</h3>
+            <h3>Approve Google Authorization</h3>
           </div>
           <div class="step-image-wrapper" onclick="openModal(1)">
             <img src="images/allow02.png" alt="Step 2">
           </div>
           <div class="step-text-content">
             <div class="note-callout" style="margin: 0 0 14px 0;">
-              ⚡ One-time setup — only 5 clicks
-            </div>
+          ⚡ One-time setup — only 5 clicks
+        </div>
             <p>After clicking <strong>Export Structure</strong>, Google displays an authorization popup.</p>
 
             <p><strong>Click:</strong></p>
@@ -117,7 +105,7 @@
               <li><strong>OK</strong></li>
             </ol>
 
-
+            
           </div>
         </div>
 
@@ -166,18 +154,9 @@
 
             <div class="note-callout">
               🚀 After clicking <strong>Continue</strong>, wait approximately 5 seconds.<br>
-              The export process will start automatically without additional actions.
+              The export process starts automatically.
             </div>
           </div>
-           
-        </div>
-        <!-- Before You Start -->
-        <div class="info-banner">
-          <span class="icon">ℹ️</span><div>
-          <p><strong>Why is Google showing a warning?</strong></p><p>Google displays this message for many independent Apps Script tools that have not completed Google's public verification process.
-</p><p>The authorization simply allows the spreadsheet to access your Drive and write the export results.
-</p><p>🔒 No file contents are uploaded to external servers.
-          </p></div>
         </div>
 
         <!-- Free Trial Limitations -->
@@ -296,16 +275,15 @@
       <!-- 画像 -->
       <img id="modal-img" src="" alt="">
       <!-- 見出し＋補足文言（縦積み） -->
-
-
-
       <div class="modal-text-area">
         <h3 id="modal-title"></h3>
         <p id="modal-body"></p>
       </div>
+
       <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-      </div>
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
     </div>
   </div>
 

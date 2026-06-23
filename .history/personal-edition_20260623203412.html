@@ -130,47 +130,30 @@
         <p class="desc">Be the first to know when Personal Edition becomes available.
           Early-access pricing is planned for waitlist members.</p>
 
-        <form class="waitlist-form" id="waitlist-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSe7KbdaFORFnTP64CwD7AC8NbCqmuysNHLGelfU1iEScVxCIA/formResponse"
-          method="POST" target="hidden_iframe"
-          onsubmit="submitted=true;">
-
-          <input type="email" name="entry.1918369019" id="waitlist-email" placeholder="you@example.com" required
-            aria-label="Email address" />
+        <!-- <form class="waitlist-form" id="waitlist-form">
+          <input type="email" id="waitlist-email" placeholder="you@example.com" required aria-label="Email address" />
           <button type="submit" class="btn btn-primary">Notify Me</button>
-        </form>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        <!-- <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
-          onload="if(submitted){window.location.hash='waitlist-success';}"></iframe> -->
+        </form> -->
+<form class="waitlist-form" id="waitlist-form" 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSe7KbdaFORFnTP64CwD7AC8NbCqmuysNHLGelfU1iEScVxCIA/formResponse" 
+      method="POST" target="hidden_iframe">
+    
+    <input type="email" name="entry.あなたの固有ID" id="waitlist-email" placeholder="you@example.com" required aria-label="Email address" />
+    <button type="submit" class="btn btn-primary">Notify Me</button>
+</form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){window.location.hash='waitlist-success';}"></iframe>
 
-
-        <div class="waitlist-success" id="waitlist-success" style="display:none;">
+        
+        <div class="waitlist-success" id="waitlist-success">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <polyline points="20 6 9 17 4 12" />
           </svg>
           Thanks! We'll email you when checkout opens.
         </div>
-
-        <!-- 4. JavaScript処理 -->
-<script>
-  var submitted = false;
-</script>
-
-<script>
-  var submitted = false;
-  
-  // iframeが読み込まれたら実行される関数
-  document.getElementById('hidden_iframe').onload = function() {
-    if (submitted) {
-      // フォームを非表示にする
-      document.getElementById('waitlist-form').style.display = 'none';
-      // サンクス表示を表示する
-      document.getElementById('waitlist-success').style.display = 'block';
-    }
-  };
-</script>
         <p class="waitlist-note">No spam. One email when Personal Edition launches.</p>
+
         <div class="waitlist-divider">OR</div>
+
         <p style="font-size:14px;color:var(--text-muted);">
           Have a question before then? <a href="mailto:toishitool@gmail.com" class="contact-link">Contact us
             directly</a>
@@ -187,6 +170,23 @@
   </div>
   <div id="footer-container"></div>
   <script src="js/common.js"></script>
+
+
+  <script>
+    // Waitlist form — placeholder client-side handling.
+    // Replace this with a real integration (e.g. Google Form, Mailchimp, Lemon Squeezy waitlist, etc).
+    const form = document.getElementById('waitlist-form');
+    const success = document.getElementById('waitlist-success');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('waitlist-email').value;
+      if (!email) return;
+      // TODO: send `email` to your waitlist backend/service here.
+      form.classList.add('hide');
+      success.classList.add('show');
+    });
+  </script>
+
 
 
 

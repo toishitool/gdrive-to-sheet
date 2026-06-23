@@ -2932,8 +2932,7 @@ nav {
     .ordered-list li::before {
       content: counter(step-list);
       flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-      background: var(--primary);
-      color: var(--primary-light);
+      background: var(--primary-light); color: var(--primary-dark);
       font-size: 12px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
       margin-top: 1px;
@@ -3277,7 +3276,7 @@ nav {
 .step-num {
   font-size: 13px;
   font-weight: 700;
-  color: var(--primary-dark);
+  color: var(--primary);
   margin-bottom: 10px;
   letter-spacing: .06em;
 }
@@ -3286,7 +3285,7 @@ nav {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 6px;
-  color: var(--primary-dark);
+  color: var(--primary);
 }
 
 .step-card p {

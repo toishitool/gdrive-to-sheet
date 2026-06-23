@@ -2932,7 +2932,7 @@ nav {
     .ordered-list li::before {
       content: counter(step-list);
       flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-      background: var(--primary);
+      background: var(--primary-dark);
       color: var(--primary-light);
       font-size: 12px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;

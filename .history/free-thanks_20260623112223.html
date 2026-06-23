@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You for Downloading – GDrive To Sheet</title>
+  <meta name="description"
+    content="Your free trial copy of GDrive To Sheet is ready. Follow the setup steps to get started." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div id="header-container"></div>
+
+
+  <main>
+
+    <!-- HERO / CONFIRMATION -->
+    <section class="hero">
+      <div class="container">
+        <div class="celebrate-icon">🎉</div>
+        <h1>Thank You!</h1>
+        <p class="sub">Your free trial copy of GDrive To Sheet should have opened in a new tab. If the spreadsheet did
+          not open automatically, click the button below:</p>
+        <a href="https://docs.google.com/spreadsheets/d/REPLACE_WITH_TEMPLATE_ID/copy"
+          class="btn btn-secondary open-trial-btn">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+          Open Free Trial Spreadsheet
+        </a>
+        <p class="open-note">Opens a copy directly in your own Google account.</p>
+      </div>
+    </section>
+
+    <div class="page-wrap">
+      <div class="container">
+
+        <!-- Before You Start -->
+        <div class="info-banner">
+          <span class="icon">ℹ️</span>
+          <p><strong>Before You Start:</strong> The Free Version allows you to export up to <strong>50 items per
+              export</strong> so you can verify compatibility with your Google account and workflow before upgrading.
+          </p>
+        </div>
+
+        <!-- First-Time Setup -->
+        <div class="section">
+          <span class="eyebrow">Required Once</span>
+          <h2>First-Time Setup</h2>
+          <p>Google requires a one-time authorization before your first export. The process takes only five clicks.</p>
+        </div>
+
+        <!-- Step 1 -->
+<div class="step-card" data-step="0">
+  <div class="step-card-head">
+    <div class="step-num">1</div>
+    <h3>Open the Drive_Structure Sheet</h3>
+  </div>
+  <div class="step-image-wrapper" onclick="openModal(0)">
+    <img src="images/allow01.png" alt="Step 1">
+  </div>
+  <div class="step-text-content">
+    <p>Inside your copied spreadsheet:</p>
+    <ol class="ordered-list">
+      <li>Open the <strong>Drive_Structure</strong> sheet</li>
+      <li>Paste a Google Drive URL into cell <strong>B2</strong></li>
+      <li>Click <strong>Export Structure</strong></li>
+    </ol>
+  </div>
+</div>
+  <div class="eyebrow mini-badge">
+⚡ One-time setup — only 5 clicks
+</div>
+<div class="step-card" data-step="1">
+ 
+  <div class="step-card-head">
+   
+    <div class="step-num">2</div>
+    <h3>Approve Google Authorization</h3>
+  </div>
+  <div class="step-image-wrapper" onclick="openModal(1)">
+    <img src="images/allow02.png" alt="Step 2">
+  </div>
+  <div class="step-text-content">
+     <p>After clicking <strong>Export Structure</strong>, Google displays an authorization popup.</p>
+
+  <p><strong>Click:</strong></p>
+
+  <ol class="ordered-list">
+    <li><strong>OK</strong></li>
+  </ol>
+
+  <div class="note-callout">
+    One-time setup only.
+  </div>
+  </div>
+</div>
+
+<div class="step-card" data-step="2">
+  <div class="step-card-head">
+    <div class="step-num">3</div>
+    <h3>Security Warning</h3>
+  </div>
+  <div class="step-image-wrapper" onclick="openModal(2)">
+    <img src="images/allow03.png" alt="Step 3">
+  </div>
+  <div class="step-text-content">
+    <p>Google may display a security warning because the script has not completed Google's public verification process.</p>
+
+  <p><strong>Click:</strong></p>
+
+  <ol class="ordered-list" style="counter-reset: step-list 1;">
+    <li ><strong>Advanced</strong></li>
+    <li><strong>Go to GDrive To Sheet (unsafe)</strong></li>
+  </ol>
+
+  <div class="note-callout privacy">
+    🔒 No file contents are uploaded to external servers.
+  </div>
+  </div>
+</div>
+
+<div class="step-card" data-step="3">
+  <div class="step-card-head">
+    <div class="step-num">4</div>
+    <h3>Access Request</h3>
+  </div>
+  <div class="step-image-wrapper" onclick="openModal(3)">
+    <img src="images/allow04.png" alt="Step 4">
+  </div>
+  <div class="step-text-content">
+    <p>Grant the required permissions for Google Drive metadata access and spreadsheet output.</p>
+
+  <p><strong>Click:</strong></p>
+
+  <ol class="ordered-list" style="counter-reset: step-list 3;">
+    <li><strong>Select all</strong></li>
+    <li><strong>Continue</strong></li>
+  </ol>
+
+  <div class="note-callout">
+    🚀 After clicking <strong>Continue</strong>, wait approximately 5 seconds.<br>
+    The export process starts automatically.
+  </div>
+  </div>
+</div>
+
+        <!-- Free Trial Limitations -->
+        <div class="section" style="margin-top:48px;">
+          <h2>Free Trial Limitations</h2>
+          <p>The free trial includes:</p>
+        </div>
+        <div class="limit-table" style="margin-bottom:48px;">
+          <div class="limit-row yes"><span class="li-icon">✅</span> Full feature access</div>
+          <div class="limit-row yes"><span class="li-icon">✅</span> Real Google Drive exports</div>
+          <div class="limit-row yes"><span class="li-icon">✅</span> Folder hierarchy generation</div>
+          <div class="limit-row no"><span class="li-icon">❌</span> Limited to 50 items per export</div>
+        </div>
+        <p style="font-size:14.5px;color:var(--text-muted);margin-top:-24px;margin-bottom:48px;">Personal and Team
+          Editions remove the export limit.</p>
+
+        <!-- Need Help -->
+        <div class="section">
+          <h2>Need Help?</h2>
+        </div>
+        <div class="help-card" style="margin-bottom:56px;">
+          <h3>📩 Contact Support</h3>
+          <p>If you experience any issues during setup or authorization, please contact support and include:</p>
+          <ul class="help-checklist">
+            <li>Product edition (Free, Personal, Team)</li>
+            <li>Error message text (if available)</li>
+            <li>Relevant screenshots (if applicable)</li>
+            <li>Google account type (Personal or Workspace)</li>
+          </ul>
+          <p style="margin-bottom:0;">We will be happy to help. <a href="mailto:toishitool@gmail.com"
+              style="color:var(--green);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,165,134,0.3);">toishitool@gmail.com</a>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+
+  </main>
+
+  <section class="upsell reveal" aria-labelledby="upsell-heading">
+    <div class="container">
+      <div class="upsell-inner">
+        <span class="eyebrow">Need More?</span>
+        <h2 id="upsell-heading">Need unlimited exports?</h2>
+
+        <div class="upsell-card">
+          <div class="upsell-card-header">
+            <span class="upsell-name">Personal Edition</span>
+            <span class="upsell-badge">Most Popular</span>
+          </div>
+          <div class="upsell-price">
+            <span class="now">$29</span>
+            <span class="was">$49</span>
+          </div>
+          <div class="upsell-launch">🎉 Launch price — save $20</div>
+          <div class="upsell-divider"></div>
+          <ul class="price-features">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Unlimited exports</strong></span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>All core features included</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Auto-resume processing</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Tested on datasets with 50,000+ items</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Single-user license — 1 user only</span>
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Lifetime license — one-time purchase</strong></span>
+            </li>
+
+          </ul>
+          <a href="personal-edition.html" class="btn btn-primary upsell-btn">Upgrade to Personal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <script src="js/common.js"></script>
+
+<!-- ステップ詳細モーダル -->
+<div id="step-modal" style="display: none;" class="modal-overlay" onclick="if (event.target === this) closeModal();">
+  <div class="modal-content">
+
+    <!-- 右上の閉じるボタン -->
+    <span class="close-btn" onclick="closeModal()" role="button" tabindex="0" aria-label="閉じる">&times;</span>
+
+    <!-- 左右のナビゲーションボタン -->
+    <button class="nav-btn prev-btn" onclick="navigateStep(-1)" aria-label="前のステップ">&lsaquo;</button>
+    <button class="nav-btn next-btn" onclick="navigateStep(1)" aria-label="次のステップ">&rsaquo;</button>
+
+    <!-- 画像 -->
+    <img id="modal-img" src="" alt="">
+
+    <!-- 見出し＋補足文言（縦積み） -->
+    <div class="modal-text-area">
+      <h3 id="modal-title"></h3>
+      <p id="modal-body"></p>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+
+</html>

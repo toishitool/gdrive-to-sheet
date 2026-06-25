@@ -158,72 +158,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /** ======= 【追加】スマホ判定＆CTAボタン・チェックボックス連動制御 ======= */
-  // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // // 各種要素の取得（存在しないページでは null になります）
-  // const primaryBtn = document.getElementById('primary-cta');
-  // const secondaryBtn = document.getElementById('secondary-cta');
-  // const containerPrimary = document.getElementById('check-container-primary');
-  // const containerSecondary = document.getElementById('check-container-secondary');
-  // const checkboxPrimary = document.getElementById('confirm-sp-primary');
-  // const checkboxSecondary = document.getElementById('confirm-sp-secondary');
+  // 各種要素の取得（存在しないページでは null になります）
+  const primaryBtn = document.getElementById('primary-cta');
+  const secondaryBtn = document.getElementById('secondary-cta');
+  const containerPrimary = document.getElementById('check-container-primary');
+  const containerSecondary = document.getElementById('check-container-secondary');
+  const checkboxPrimary = document.getElementById('confirm-sp-primary');
+  const checkboxSecondary = document.getElementById('confirm-sp-secondary');
 
-  // if (isMobile) {
-  //   // 1. スマホかつ、チェックボックス要素が画面に存在するページでのみ作動
-  //   if (containerPrimary) containerPrimary.style.display = 'flex';
-  //   if (containerSecondary) containerSecondary.style.display = 'flex';
+  if (isMobile) {
+    // 1. スマホかつ、チェックボックス要素が画面に存在するページでのみ作動
+    if (containerPrimary) containerPrimary.style.display = 'flex';
+    if (containerSecondary) containerSecondary.style.display = 'flex';
 
-  //   // 初期状態はボタンを無効化（グレーアウト用のCSSクラスを付与）
-  //   if (primaryBtn) primaryBtn.classList.add('btn-disabled');
-  //   if (secondaryBtn) secondaryBtn.classList.add('btn-disabled');
+    // 初期状態はボタンを無効化（グレーアウト用のCSSクラスを付与）
+    if (primaryBtn) primaryBtn.classList.add('btn-disabled');
+    if (secondaryBtn) secondaryBtn.classList.add('btn-disabled');
 
-  //   // チェック状態を上下で連動させる共通関数
-  //   function updateCheckboxState(isChecked) {
-  //     if (checkboxPrimary) checkboxPrimary.checked = isChecked;
-  //     if (checkboxSecondary) checkboxSecondary.checked = isChecked;
+    // チェック状態を上下で連動させる共通関数
+    function updateCheckboxState(isChecked) {
+      if (checkboxPrimary) checkboxPrimary.checked = isChecked;
+      if (checkboxSecondary) checkboxSecondary.checked = isChecked;
 
-  //     if (isChecked) {
-  //       if (primaryBtn) primaryBtn.classList.remove('btn-disabled');
-  //       if (secondaryBtn) secondaryBtn.classList.remove('btn-disabled');
-  //     } else {
-  //       if (primaryBtn) primaryBtn.classList.add('btn-disabled');
-  //       if (secondaryBtn) secondaryBtn.classList.add('btn-disabled');
-  //     }
-  //   }
+      if (isChecked) {
+        if (primaryBtn) primaryBtn.classList.remove('btn-disabled');
+        if (secondaryBtn) secondaryBtn.classList.remove('btn-disabled');
+      } else {
+        if (primaryBtn) primaryBtn.classList.add('btn-disabled');
+        if (secondaryBtn) secondaryBtn.classList.add('btn-disabled');
+      }
+    }
 
-  //   // チェックボックスにイベント登録
-  //   checkboxPrimary?.addEventListener('change', function() { updateCheckboxState(this.checked); });
-  //   checkboxSecondary?.addEventListener('change', function() { updateCheckboxState(this.checked); });
+    // チェックボックスにイベント登録
+    checkboxPrimary?.addEventListener('change', function() { updateCheckboxState(this.checked); });
+    checkboxSecondary?.addEventListener('change', function() { updateCheckboxState(this.checked); });
 
-  //   // スマホ用クリック処理（チェックされていれば新規タブ展開＋サンクス遷移）
-  //   const handleCtaClick = function(e) {
-  //     if (checkboxPrimary && !checkboxPrimary.checked) {
-  //       e.preventDefault();
-  //       return;
-  //     }
-  //     e.preventDefault();
-  //     window.open('https://docs.google.com/spreadsheets/d/1XC61kJ0gTl77MmNbun20sqAu81Rwod_-uWnyr1DBxf4/copy', '_blank');
-  //     window.location.href = 'free-thanks.html';
-  //   };
+    // スマホ用クリック処理（チェックされていれば新規タブ展開＋サンクス遷移）
+    const handleCtaClick = function(e) {
+      if (checkboxPrimary && !checkboxPrimary.checked) {
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      window.open('https://docs.google.com/spreadsheets/d/1XC61kJ0gTl77MmNbun20sqAu81Rwod_-uWnyr1DBxf4/copy', '_blank');
+      window.location.href = 'free-thanks.html';
+    };
 
-  //   primaryBtn?.addEventListener('click', handleCtaClick);
-  //   secondaryBtn?.addEventListener('click', handleCtaClick);
+    primaryBtn?.addEventListener('click', handleCtaClick);
+    secondaryBtn?.addEventListener('click', handleCtaClick);
 
-  // } else {
-  //   // 2. PCの場合の処理（ボタンがあれば、クリック時に新規タブ展開＋サンクス遷移）
-  //   const handlePcCtaClick = function(e) {
-  //     e.preventDefault();
-  //     window.open('https://docs.google.com/spreadsheets/d/1XC61kJ0gTl77MmNbun20sqAu81Rwod_-uWnyr1DBxf4/copy', '_blank');
-  //     window.location.href = 'free-thanks.html';
-  //   };
+  } else {
+    // 2. PCの場合の処理（ボタンがあれば、クリック時に新規タブ展開＋サンクス遷移）
+    const handlePcCtaClick = function(e) {
+      e.preventDefault();
+      window.open('https://docs.google.com/spreadsheets/d/1XC61kJ0gTl77MmNbun20sqAu81Rwod_-uWnyr1DBxf4/copy', '_blank');
+      window.location.href = 'free-thanks.html';
+    };
 
-  //   primaryBtn?.addEventListener('click', handlePcCtaClick);
-  //   secondaryBtn?.addEventListener('click', handlePcCtaClick);
-  // }
+    primaryBtn?.addEventListener('click', handlePcCtaClick);
+    secondaryBtn?.addEventListener('click', handlePcCtaClick);
+  }
   /** ======= 追加ここまで ======= */
 
 
 
-
+  
 });
 

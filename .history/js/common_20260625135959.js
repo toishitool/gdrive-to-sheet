@@ -167,5 +167,8 @@ document.getElementById('checkButton').addEventListener('click', function() {
     // スマホユーザーだった場合のみポップアップを表示
     if (isMobile) {
         alert("スマホユーザーですか？");
+    }else {
+        // PCユーザーだった場合の処理（必要なければ消してOKです）
+        console.log("PCからのアクセスです。");
     }
 });

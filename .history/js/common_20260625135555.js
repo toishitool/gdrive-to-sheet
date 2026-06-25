@@ -156,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
 });
 
-/** =======PCかスマホかを判断する　これから===================================================================*/
 
 // ボタンがクリックされた時のイベントを設定
 document.getElementById('checkButton').addEventListener('click', function() {

@@ -1000,10 +1000,6 @@ nav {
     background: rgb(15 26 24 / 92%);
   }
 
-  .pain{
-background: #323937;
-      }
-      
   .pain-card,
   .feat-card,
   .price-card,
@@ -3175,12 +3171,6 @@ background: #323937;
 
       .highlight-card.tip p {
    color: var(--blue-border); 
-}
-
-   #how-it-works {
-  background-image: url('images/howitworksBG.jpg');
-  background-blend-mode: soft-light;
-  background-color: rgb(53 105 94);
   }
 
     }

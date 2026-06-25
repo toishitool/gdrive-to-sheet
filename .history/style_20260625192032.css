@@ -1000,10 +1000,6 @@ nav {
     background: rgb(15 26 24 / 92%);
   }
 
-  .pain{
-background: #323937;
-      }
-      
   .pain-card,
   .feat-card,
   .price-card,
@@ -2283,10 +2279,6 @@ background: #323937;
   .hero-grid {
     grid-template-columns: 1fr;
   }
-
-      .cta-band-inner {
-       display: flex;
-      flex-direction: column; }
 }
 
 /* Left: copy */
@@ -2573,8 +2565,6 @@ background: #323937;
   .price-card { background: #141F1D; }
   .waitlist-form input[type="email"] { background: #0F1A18; }
   .coming-soon p { color: #FBBF24; }
-
-  
 }
 
 
@@ -3163,8 +3153,6 @@ background: #323937;
         --primary-light: #0D2420;
         --red-bg: #1C0606;
         --red-border: #7F1D1D;
-        --blue-bg: #1a2733;      /* ダークモード用の暗い青 */
-  --blue-border: #4a9eff;  /* ダークモード用の明るめの青 */
       }
 
       .simple-header { background: rgb(15 26 24 / 92%); }
@@ -3172,17 +3160,6 @@ background: #323937;
       .help-card { background: #141F1D; }
       
       .menu-path { background: #0D2420; }
-
-      .highlight-card.tip p {
-   color: var(--blue-border); 
-}
-
-   #how-it-works {
-  background-image: url('images/howitworksBG.jpg');
-  background-blend-mode: soft-light;
-  background-color: rgb(53 105 94);
-  }
-
     }
 
     @media (width <= 600px) {
@@ -3484,8 +3461,8 @@ background: #323937;
 
 
     .sp-only-check {
-      display: none; /* デフォルト（PC）では非表示 */
-      margin-bottom: 8px;
+      display: flex; /* デフォルト（PC）では非表示 */
+      margin-bottom: 6px;
       align-items: center;
       justify-content: center;
       gap: 8px;

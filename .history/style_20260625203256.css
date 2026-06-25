@@ -3179,8 +3179,8 @@ background: #323937;
 
    #how-it-works {
   background-image: url('images/howitworksBG.jpg');
-  background-blend-mode: soft-light;
-  background-color: rgb(53 105 94);
+  background-blend-mode: multiply;
+  background-color: rgb(48 67 63);
   }
 
     }

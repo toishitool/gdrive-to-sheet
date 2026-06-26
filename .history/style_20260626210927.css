@@ -3635,23 +3635,13 @@ background: #323937;
     .comparison-table td:not(:first-child) { text-align: center; }
     .comparison-table tr:last-child td { border-bottom: none; }
     .cell-check { color: var(--primary); }
-
-    .cell-check svg { 
-      display: inline-block; vertical-align: middle; }
-
+    .cell-check svg { display: inline-block; vertical-align: middle; }
     .cell-x { color: var(--text-light, #9CA3AF); }
-
-    .cell-x svg { 
-      display: inline-block; vertical-align: middle; }
-
+    .cell-x svg { display: inline-block; vertical-align: middle; }
     .cell-muted { color: var(--text-muted); }
-
-    .cell-highlight { 
-      color: var(--primary); font-weight: 700; }
-
+    .cell-highlight { color: var(--primary); font-weight: 700; }
     .row-diff { background: var(--primary-light); }
 
-    .row-off { background: #f0f2f6;); }
 
     /* --- FAQ: accordion instead of card grid --- */
     .faq-accordion {
@@ -3690,8 +3680,4 @@ background: #323937;
         grid-template-columns: 1fr; gap: 32px; }
 
       .comparison-table th, .comparison-table td { padding: 12px 14px; }
-    }
-
-    .section-base {
-      padding: 40px 0;
     }

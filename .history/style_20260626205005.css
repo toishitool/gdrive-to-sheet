@@ -783,7 +783,7 @@ nav {
 .use-case-grid {
   display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 16px;
   margin-top: 48px;
 }
 
@@ -792,10 +792,6 @@ nav {
   font-weight: 600;
 }
 
-.use-case-text p {
-   font-size: 14.5px; color: var(--text-muted); margin: 0; line-height: 1.6; }
-
-
 .use-case-card {
   background: #fff;
   border: 1px solid var(--border);
@@ -803,7 +799,7 @@ nav {
   padding: 16px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   flex-direction: column;
 }
 
@@ -1145,10 +1141,9 @@ background: #323937;
     gap: 36px;
   }
 
-  .use-grid, .use-case-grid {
+  .use-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
 
 
 
@@ -1175,7 +1170,7 @@ background: #323937;
     grid-template-columns: 1fr;
   }
 
-  .use-grid, .use-case-grid {
+  .use-grid {
     grid-template-columns: 1fr;
   }
 
@@ -3575,51 +3570,34 @@ background: #323937;
       display: grid; grid-template-columns: 0.85fr 1.15fr;
       gap: 56px; align-items: start;
     }
-
-    .why-upgrade-header {
-       text-align: left; margin-bottom: 0; }
-
+    .why-upgrade-header { text-align: left; margin-bottom: 0; }
     .why-upgrade-header .eyebrow { margin-bottom: 16px; }
+    .why-upgrade-header h2 { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 14px; }
+    .why-upgrade-header p { margin: 0; max-width: 380px; }
 
-    .why-upgrade-header h2 {
-       font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 14px; }
-    
-       .why-upgrade-header p {
-       margin: 0; max-width: 380px; }
-
-    .upgrade-reason-list {
-       list-style: none; display: flex; flex-direction: column; }
+    .upgrade-reason-list { list-style: none; display: flex; flex-direction: column; }
 
     .upgrade-reason {
       display: flex; gap: 20px; align-items: flex-start;
       padding: 22px 0; border-bottom: 1px solid var(--border);
     }
     .upgrade-reason:first-child { padding-top: 0; }
-
-    .upgrade-reason:last-child {
-       border-bottom: none; padding-bottom: 0; }
+    .upgrade-reason:last-child { border-bottom: none; padding-bottom: 0; }
 
     .reason-index {
       font-size: 13px; font-weight: 700; letter-spacing: .04em;
       color: var(--primary); flex-shrink: 0; margin-top: 3px;
       min-width: 28px;
     }
-
-    .reason-body h3 {
-       font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    
-    .reason-body p {
-       font-size: 14.5px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+    .reason-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .reason-body p { font-size: 14.5px; color: var(--text-muted); margin: 0; line-height: 1.6; }
 
     /* --- Comparison: enhanced table with icon cells + highlighted diff row --- */
     .compare-table-wrap {
       border: 1px solid var(--border); border-radius: 14px;
-      overflow: hidden; margin: 16px auto;
-    max-width: 640px;
+      overflow: hidden; margin-top: 16px;
     }
-
-    .comparison-table {
-       width: 100%; border-collapse: collapse; }
+    .comparison-table { width: 100%; border-collapse: collapse; }
 
     .comparison-table th {
       background: var(--bg-subtle, #F9FAFB); font-size: 13px; font-weight: 700;
@@ -3635,23 +3613,27 @@ background: #323937;
     .comparison-table td:not(:first-child) { text-align: center; }
     .comparison-table tr:last-child td { border-bottom: none; }
     .cell-check { color: var(--primary); }
-
-    .cell-check svg { 
-      display: inline-block; vertical-align: middle; }
-
+    .cell-check svg { display: inline-block; vertical-align: middle; }
     .cell-x { color: var(--text-light, #9CA3AF); }
-
-    .cell-x svg { 
-      display: inline-block; vertical-align: middle; }
-
+    .cell-x svg { display: inline-block; vertical-align: middle; }
     .cell-muted { color: var(--text-muted); }
-
-    .cell-highlight { 
-      color: var(--primary); font-weight: 700; }
-
+    .cell-highlight { color: var(--primary); font-weight: 700; }
     .row-diff { background: var(--primary-light); }
 
-    .row-off { background: #f0f2f6;); }
+    /* --- Use Cases: horizontal icon rows instead of card grid --- */
+    .usecase-row-list {
+      display: flex; flex-direction: column;
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    .usecase-row {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 22px 4px; border-bottom: 1px solid var(--border);
+    }
+    .usecase-icon { font-size: 24px; flex-shrink: 0; line-height: 1.4; }
+    .usecase-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .usecase-text p { font-size: 14.5px; color: var(--text-muted); margin: 0; line-height: 1.6; }
 
     /* --- FAQ: accordion instead of card grid --- */
     .faq-accordion {
@@ -3673,12 +3655,8 @@ background: #323937;
     .faq-accordion-item summary h3 {
       font-size: 15.5px; font-weight: 600; margin: 0; color: var(--text);
     }
-
-    .faq-chevron {
-       flex-shrink: 0; color: var(--text-muted); transition: transform .2s; }
-    
-       .faq-accordion-item[open] .faq-chevron {
-       transform: rotate(180deg); color: var(--primary); }
+    .faq-chevron { flex-shrink: 0; color: var(--text-muted); transition: transform .2s; }
+    .faq-accordion-item[open] .faq-chevron { transform: rotate(180deg); color: var(--primary); }
 
     .faq-accordion-item p {
       font-size: 14.5px; color: var(--text-muted); line-height: 1.7;
@@ -3686,12 +3664,6 @@ background: #323937;
     }
 
     @media (width <= 860px) {
-      .why-upgrade-grid { 
-        grid-template-columns: 1fr; gap: 32px; }
-
+      .why-upgrade-grid { grid-template-columns: 1fr; gap: 32px; }
       .comparison-table th, .comparison-table td { padding: 12px 14px; }
-    }
-
-    .section-base {
-      padding: 40px 0;
     }

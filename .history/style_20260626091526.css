@@ -3516,18 +3516,3 @@ background: #323937;
   /* 緑色が全体の50%地点まで続き、そこから透明へ向かう */
   background-image:linear-gradient(to bottom, var(--primary-dark) 0%, transparent 50%, transparent 100%);
 }
-
-.hero.grid-bg.gradient-box {
-  /* 1. 緑のグラデーション（上書き用）
-     2. 横方向のグリッド線
-     3. 縦方向のグリッド線
-  */
-  background-image: 
-    linear-gradient(to bottom, #00c19c 0%, transparent 30%, transparent 100%),
-    linear-gradient(rgb(0 165 134 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(0 165 134 / 4%) 1px, transparent 1px);
-  background-size: 
-    100% 100%, /* グラデーション用 */
-    32px 32px, /* 横グリッド用 */
-    32px 32px; /* 縦グリッド用 */
-}

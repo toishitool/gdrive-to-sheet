@@ -1110,14 +1110,6 @@ position: absolute;
 }
 
 @media (width <= 900px) {
-  #drive-heroimage {
-    position: absolute;
-    top: 21%;
-    left: 31%;
-        width: 66%;
-
-    }
-
   .hero-inner {
     display: flex;
     flex-direction: column;

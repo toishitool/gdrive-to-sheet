@@ -1086,22 +1086,6 @@ background: #323937;
   }
 }
 
- #drive-heroimage {
-position: absolute;
-    top: 37%;
-    left: 61%;
-    transform: translate(-50%, -50%);
-    width: 43%;
-    height: auto;
-    opacity: 0.35;
-    z-index: 0;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    box-shadow: 10px 10px 50px rgb(19 81 70 / 40%);
-  }
-
-
-
 /* ── Mobile ── */
 @media (width >= 600px) {
   .hero-container {
@@ -1110,14 +1094,6 @@ position: absolute;
 }
 
 @media (width <= 900px) {
-  #drive-heroimage {
-    position: absolute;
-    top: 21%;
-    left: 31%;
-        width: 66%;
-
-    }
-
   .hero-inner {
     display: flex;
     flex-direction: column;
@@ -1182,8 +1158,8 @@ position: absolute;
 
 @media (width <= 600px) {
     #drive-heroimage {
-top: 12%;
-    left: 30%;
+top: 10%;
+    left: 28%;
     width: 55%;
   }
 

@@ -821,7 +821,7 @@ nav {
 }
 
 .use-card {
-  background: #ffffff75;
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 24px;
@@ -2755,9 +2755,8 @@ top: 12%;
 
 /* License comparison cards */
 .license-grid {
-  display: grid; grid-template-columns: 1fr;
-  gap: 20px; margin: 48px auto;
-  max-width: 480px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; margin-bottom: 48px;
 }
 
 .license-card {
